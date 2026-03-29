@@ -1,4 +1,5 @@
 import { Cursor } from "@/components/Cursor";
+import { Background } from "@/components/Background";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
@@ -13,6 +14,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <div className="relative bg-background min-h-screen text-foreground selection:bg-primary/30">
+      <Background />
       <Cursor />
       <Navbar />
       

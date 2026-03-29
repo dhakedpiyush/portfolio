@@ -109,7 +109,7 @@ export function Skills() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.05 }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="px-6 py-3 rounded-full bg-secondary/80 border border-white/5 text-foreground shadow-lg backdrop-blur-md cursor-default flex items-center gap-2 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,161,224,0.3)] transition-all"
+                      className="px-6 py-3 rounded-full bg-secondary/80 border border-white/5 text-foreground shadow-lg backdrop-blur-md flex items-center gap-2 hover:border-primary/50 hover:bg-secondary transition-all"
                     >
                       <span className="w-2 h-2 rounded-full bg-accent"></span>
                       {skill}

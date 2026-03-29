@@ -44,13 +44,15 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "py-4" : "py-6"
+        isScrolled
+          ? "py-3 bg-background/95 backdrop-blur-xl border-b border-border/20 shadow-md"
+          : "py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className={cn(
-          "flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300",
-          isScrolled ? "glass shadow-lg shadow-primary/5" : "bg-transparent"
+          "flex items-center justify-between transition-all duration-300",
+          !isScrolled && "px-6 py-3 rounded-full glass"
         )}>
           {/* Logo */}
           <a href="#home" className="text-xl font-display font-bold text-foreground flex items-center gap-2">
