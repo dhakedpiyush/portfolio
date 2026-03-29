@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, MapPin, Mail, Linkedin } from "lucide-react";
+import { Send, MapPin, Mail, Linkedin, Mountain } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export function Contact() {
@@ -69,6 +69,18 @@ export function Contact() {
                   <Linkedin size={20} />
                 </div>
                 <span className="font-medium text-lg">linkedin.com/in/piyushdhaked</span>
+              </a>
+
+              <a 
+                href="https://www.salesforce.com/trailblazer/piyushdhaked" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors w-fit group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <Mountain size={20} />
+                </div>
+                <span className="font-medium text-lg">trailblazer/piyushdhaked</span>
               </a>
             </div>
           </motion.div>

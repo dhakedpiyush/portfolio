@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, ExternalLink, MapPin } from "lucide-react";
+import { ArrowDown, ExternalLink, MapPin, Mountain } from "lucide-react";
 
 const FULL_NAME = "Piyush Dhaked";
 const TYPE_SPEED = 90;
@@ -135,6 +135,9 @@ export function Hero() {
             </a>
             <a href="https://linkedin.com/in/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
               LinkedIn <ExternalLink size={18} />
+            </a>
+            <a href="https://www.salesforce.com/trailblazer/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
+              Trailhead <Mountain size={18} />
             </a>
           </motion.div>
         </div>
