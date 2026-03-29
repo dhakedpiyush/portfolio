@@ -72,26 +72,26 @@ export function Navbar() {
                 ? { borderRadius: 0, paddingLeft: 0, paddingRight: 0, paddingTop: 0, paddingBottom: 0 }
                 : { borderRadius: 9999, paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12 }
             }
-            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className="flex items-center justify-between relative"
             style={{
               background: isScrolled
-                ? "transparent"
+                ? "rgba(0,0,0,0)"
                 : isDark
                   ? "rgba(15, 23, 42, 0.75)"
                   : "rgba(255, 255, 255, 0.82)",
-              backdropFilter: isScrolled ? "none" : "blur(20px)",
+              backdropFilter: "blur(20px)",
               border: isScrolled
-                ? "none"
+                ? "1px solid rgba(0,0,0,0)"
                 : isDark
                   ? "1px solid rgba(255,255,255,0.08)"
                   : "1px solid rgba(0,0,0,0.07)",
               boxShadow: isScrolled
-                ? "none"
+                ? "0 4px 32px rgba(0,0,0,0)"
                 : isDark
                   ? "0 4px 32px rgba(0,0,0,0.3)"
                   : "0 4px 24px rgba(0,0,0,0.06)",
-              transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease",
+              transition: "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
             }}
           >
             {/* Logo */}
