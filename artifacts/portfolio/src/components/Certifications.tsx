@@ -59,14 +59,12 @@ const INTERVAL_MS = 3200;
 
 export function Certifications() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const next = useCallback(() => setActive(i => (i + 1) % CERTS.length), []);
   const prev = useCallback(() => setActive(i => (i - 1 + CERTS.length) % CERTS.length), []);
 
   useEffect(() => {
-    if (paused) return;
     setProgress(0);
     const start = Date.now();
     const tick = setInterval(() => {
@@ -78,7 +76,7 @@ export function Certifications() {
       }
     }, 30);
     return () => clearInterval(tick);
-  }, [active, paused, next]);
+  }, [active, next]);
 
   const getOffset = (index: number) => {
     let diff = index - active;
@@ -93,8 +91,6 @@ export function Certifications() {
     <section
       id="certifications"
       className="py-24 relative z-20 bg-black/20"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
