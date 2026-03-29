@@ -22,9 +22,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Determine active section
-      const sections = LINKS.map(l => l.name.toLowerCase());
+      const sections = [...LINKS].map(l => l.name.toLowerCase());
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
         if (el && window.scrollY >= el.offsetTop - 200) {
@@ -33,89 +31,132 @@ export function Navbar() {
         }
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isDark = theme === "dark";
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "py-3 bg-background/95 backdrop-blur-xl border-b border-border/20 shadow-md"
-          : "py-6"
-      )}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className={cn(
-          "flex items-center justify-between transition-all duration-300",
-          !isScrolled && "px-6 py-3 rounded-full glass"
-        )}>
-          {/* Logo */}
-          <a href="#home" className="text-xl font-display font-bold text-foreground flex items-center gap-2">
-            <span className="text-primary">&lt;</span>
-            Piyush
-            <span className="text-accent">/&gt;</span>
-          </a>
+      {/* Full-width border-bottom layer — fades in when scrolled */}
+      <div
+        className="absolute inset-0 border-b border-border/20 shadow-sm pointer-events-none"
+        style={{
+          opacity: isScrolled ? 1 : 0,
+          transition: "opacity 0.4s ease",
+          background: isDark
+            ? "hsl(222 47% 7% / 0.96)"
+            : "rgba(248, 250, 253, 0.96)",
+          backdropFilter: "blur(20px)",
+        }}
+      />
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors relative group py-2",
-                  activeSection === link.name.toLowerCase() 
-                    ? "text-primary" 
-                    : "text-muted-foreground hover:text-foreground"
-                )}
+      <div
+        style={{
+          paddingTop: isScrolled ? "10px" : "20px",
+          paddingBottom: isScrolled ? "10px" : "20px",
+          transition: "padding 0.4s ease",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Single pill/bar that morphs via Framer Motion */}
+          <motion.div
+            animate={
+              isScrolled
+                ? { borderRadius: 0, paddingLeft: 0, paddingRight: 0, paddingTop: 0, paddingBottom: 0 }
+                : { borderRadius: 9999, paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12 }
+            }
+            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            className="flex items-center justify-between relative"
+            style={{
+              background: isScrolled
+                ? "transparent"
+                : isDark
+                  ? "rgba(15, 23, 42, 0.75)"
+                  : "rgba(255, 255, 255, 0.82)",
+              backdropFilter: isScrolled ? "none" : "blur(20px)",
+              border: isScrolled
+                ? "none"
+                : isDark
+                  ? "1px solid rgba(255,255,255,0.08)"
+                  : "1px solid rgba(0,0,0,0.07)",
+              boxShadow: isScrolled
+                ? "none"
+                : isDark
+                  ? "0 4px 32px rgba(0,0,0,0.3)"
+                  : "0 4px 24px rgba(0,0,0,0.06)",
+              transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease",
+            }}
+          >
+            {/* Logo */}
+            <a href="#home" className="text-xl font-display font-bold text-foreground flex items-center gap-2">
+              <span className="text-primary">&lt;</span>
+              Piyush
+              <span className="text-accent">/&gt;</span>
+            </a>
+
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-8">
+              {LINKS.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors relative group py-2",
+                    activeSection === link.name.toLowerCase()
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {link.name}
+                  {activeSection === link.name.toLowerCase() && (
+                    <motion.div
+                      layoutId="active-nav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </a>
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Toggle theme"
               >
-                {link.name}
-                {activeSection === link.name.toLowerCase() && (
-                  <motion.div
-                    layoutId="active-nav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </a>
-            ))}
-          </div>
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
 
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            
-            <button
-              className="md:hidden p-2 text-foreground"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <Menu size={24} />
-            </button>
-          </div>
+              <button
+                className="md:hidden p-2 text-foreground"
+                onClick={() => setMobileMenuOpen(true)}
+              >
+                <Menu size={24} />
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-[100] bg-background/80 flex flex-col justify-center items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-xl flex flex-col justify-center items-center"
           >
-            <button 
+            <button
               className="absolute top-8 right-8 p-2 text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
