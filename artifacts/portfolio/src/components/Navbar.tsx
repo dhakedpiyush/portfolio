@@ -96,34 +96,11 @@ export function Navbar() {
               transition: "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
             }}
           >
-            {/* Logo — Salesforce cloud when pill, name when sticky */}
-            <a href="#home" className="relative flex items-center h-9 overflow-hidden">
-              <AnimatePresence mode="wait" initial={false}>
-                {!isScrolled ? (
-                  <motion.img
-                    key="sf-logo"
-                    src={`${import.meta.env.BASE_URL}images/sf-logo.png`}
-                    alt="Salesforce"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                    className="h-8 w-auto object-contain"
-                  />
-                ) : (
-                  <motion.span
-                    key="name-logo"
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -8 }}
-                    transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                    className="text-lg font-display font-bold text-foreground whitespace-nowrap flex items-center gap-1.5"
-                  >
-                    Piyush Dhaked
-                    <span className="text-primary font-semibold">&lt;/&gt;</span>
-                  </motion.span>
-                )}
-              </AnimatePresence>
+            {/* Logo */}
+            <a href="#home" className="text-xl font-display font-bold text-foreground flex items-center gap-2">
+              <span className="text-primary">&lt;</span>
+              Piyush
+              <span className="text-accent">/&gt;</span>
             </a>
 
             {/* Desktop Nav */}
