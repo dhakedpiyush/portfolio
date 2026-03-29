@@ -8,8 +8,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-0"></div>
       
       {/* Animated abstract shapes */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse z-0 mix-blend-screen"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/20 rounded-full blur-[120px] animate-pulse z-0 mix-blend-screen" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse z-0"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: '2s' }}></div>
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 flex flex-col items-start text-left">
@@ -30,10 +30,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 glitch-hover"
+            className="font-extrabold mb-4"
           >
-            Hi, I'm <br />
-            <span className="text-gradient">Piyush Dhaked</span>
+            <span className="block text-3xl md:text-4xl text-foreground/70 font-medium mb-1">Hi, I'm</span>
+            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl whitespace-nowrap">Piyush Dhaked</span>
           </motion.h1>
 
           <motion.h2
@@ -60,10 +60,10 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap items-center gap-4"
           >
-            <a href="#projects" className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold flex items-center gap-2 hover:shadow-[0_0_30px_rgba(0,161,224,0.6)] transition-all hover:-translate-y-1">
+            <a href="#projects" className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold flex items-center gap-2 hover:bg-primary/90 hover:shadow-lg transition-all hover:-translate-y-0.5">
               View My Work <ArrowDown size={18} />
             </a>
-            <a href="https://linkedin.com/in/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-1 text-foreground">
+            <a href="https://linkedin.com/in/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
               LinkedIn <ExternalLink size={18} />
             </a>
           </motion.div>
@@ -76,8 +76,8 @@ export function Hero() {
           className="flex-1 relative hidden md:block"
         >
           <div className="relative w-full max-w-md mx-auto aspect-square rounded-full animate-float">
-            <div className="absolute inset-0 rounded-full border border-primary/30 shadow-[0_0_50px_rgba(0,161,224,0.2)]"></div>
-            <div className="absolute inset-4 rounded-full border border-accent/30 border-dashed animate-spin-slow"></div>
+            <div className="absolute inset-0 rounded-full border border-primary/20 shadow-lg"></div>
+            <div className="absolute inset-4 rounded-full border border-border/30 border-dashed animate-spin-slow"></div>
             <img 
               src={`${import.meta.env.BASE_URL}images/profile.png`} 
               alt="Piyush Dhaked" 

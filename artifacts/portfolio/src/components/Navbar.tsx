@@ -76,7 +76,7 @@ export function Navbar() {
                 {activeSection === link.name.toLowerCase() && (
                   <motion.div
                     layoutId="active-nav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_8px_rgba(0,161,224,0.8)]"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -96,7 +96,7 @@ export function Navbar() {
             
             <a 
               href="#contact" 
-              className="hidden md:block px-5 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,161,224,0.4)] font-medium text-sm"
+              className="hidden md:block px-5 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium text-sm"
             >
               Hire Me
             </a>
