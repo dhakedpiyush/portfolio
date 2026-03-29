@@ -42,12 +42,15 @@ export function Contact() {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors">
-                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary">
+              <a
+                href="mailto:dhakedpiyush9291@gmail.com"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors w-fit group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                   <Mail size={20} />
                 </div>
-                <span className="font-medium text-lg">Contact via LinkedIn</span>
-              </div>
+                <span className="font-medium text-lg">dhakedpiyush9291@gmail.com</span>
+              </a>
               
               <div className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors">
                 <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary">
