@@ -1,0 +1,30 @@
+packages:
+  "framer-motion": "For complex scrolling, custom cursor, and 3D animations"
+  "react-countup": "For animated number counters in the stats section"
+  "canvas-confetti": "For success animation on the contact form"
+  "@types/canvas-confetti": "Types for canvas-confetti"
+  "clsx": "For conditional class joining"
+  "tailwind-merge": "For merging tailwind classes safely"
+images:
+  - path: "artifacts/portfolio/public/images/hero-bg.png"
+    description: "Dark futuristic deep navy and electric cyan gradient mesh with aurora borealis flowing lights and subtle technical grid"
+    aspect_ratio: "16:9"
+  - path: "artifacts/portfolio/public/images/profile.png"
+    description: "A futuristic highly stylized silhouette portrait of a developer with glowing blue and purple neon edges on a transparent background"
+    aspect_ratio: "1:1"
+  - path: "artifacts/portfolio/public/images/crs-project.png"
+    description: "Futuristic aviation dashboard interface with glassmorphism panels, glowing data charts, and dark theme"
+    aspect_ratio: "16:9"
+  - path: "artifacts/portfolio/public/images/ai-workflow.png"
+    description: "Abstract representation of AI processing email workflows with glowing nodes connecting to document icons"
+    aspect_ratio: "16:9"
+  - path: "artifacts/portfolio/public/images/formula.png"
+    description: "Futuristic database schema grid with glowing connection lines and glowing data cells"
+    aspect_ratio: "16:9"
+  - path: "artifacts/portfolio/public/images/event-modal.png"
+    description: "Glassmorphic modal popup UI with glowing success indicators and real time data streaming lines"
+    aspect_ratio: "16:9"
+notes:
+  - No backend required, completely static pure frontend portfolio
+  - Implement custom dark/light mode logic internally
+  - Single page scrolling architecture with # anchor links

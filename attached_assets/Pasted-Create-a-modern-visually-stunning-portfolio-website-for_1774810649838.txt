@@ -1,0 +1,416 @@
+Create a modern, visually stunning portfolio website for a Salesforce Developer with cutting-edge aesthetics and immersive animations.
+
+---
+
+## PERSONAL INFORMATION
+- **Name:** Piyush Dhaked
+- **Title:** Salesforce Developer & Tech Lead
+- **Tagline:** 5x Certified Salesforce Developer | 4 Years of Experience | Apex | LWC | Service Cloud
+- **Location:** Jaipur, Rajasthan, India
+- **LinkedIn:** https://www.linkedin.com/in/piyushdhaked/
+- **Trailhead Profile:** Trailblazer (Four Star Ranger)
+- **Network:** 1,273+ followers | 500+ connections
+
+---
+
+## PROFESSIONAL SUMMARY
+Experienced Salesforce Developer with 4 years of hands-on expertise in Salesforce development, administration, and implementation. Specialized in building B2B solutions using managed packages like AvSight (aviation MRO), AuthVia, and Accounting Seed. Strong background in Apex programming, Lightning Web Components (LWC), Visualforce, Flows, and Salesforce integrations. Currently serving as a Tech Lead managing multiple client projects and mentoring development teams. Passionate about clean code, best practices, and delivering scalable enterprise solutions.
+
+---
+
+## WORK EXPERIENCE
+
+### 1. Salesforce Developer | Metadologie
+**December 2024 – Present** | Jaipur, Rajasthan, India | Full-time, On-site
+
+**Key Responsibilities & Achievements:**
+- Lead Salesforce implementations for multiple enterprise clients including CRS Jet Spares (aviation MRO industry)
+- Develop and maintain complex Apex classes, triggers, and batch jobs with focus on bulkification and governor limit optimization
+- Build Lightning Web Components (LWC) for custom UI solutions including Platform Event-driven modals and dynamic forms
+- Configure Service Cloud features including Email-to-Case, Case Assignment Rules, Escalation Rules, and Approval Processes
+- Work with managed packages: AvSight (inscor__ namespace), AuthVia, Accounting Seed
+- Mentor team of interns and conduct code reviews ensuring Salesforce best practices
+- Manage QA/UAT/Production org refresh coordination and deployment strategies
+- Create metadata-driven solutions using Custom Metadata Types for flexible configurations
+
+**Technologies:** Apex, LWC, Visualforce, SOQL/SOSL, Flows, Process Builder, Service Cloud, Sales Cloud
+
+---
+
+### 2. Salesforce Developer | Myridius x Aethereus
+**July 2023 – December 2024** (1 year 6 months) | Pune, Maharashtra, India | Full-time, On-site
+
+**Key Responsibilities & Achievements:**
+- Developed custom Salesforce applications using Apex and Lightning components
+- Implemented asynchronous Apex patterns (Batch, Queueable, Future, Schedulable) for large data processing
+- Built integrations with external systems using REST/SOAP APIs
+- Configured complex automation using Flows and Process Builder
+- Participated in full SDLC from requirements gathering to deployment
+
+**Technologies:** Apex Programming, Asynchronous Apex, Lightning Components, SOQL, Integrations
+
+---
+
+### 3. Salesforce Developer Intern | Myridius x Aethereus
+**July 2022 – July 2023** (1 year 1 month) | Remote
+
+**Key Responsibilities & Achievements:**
+- Gained foundational knowledge in Salesforce Administration and Development
+- Worked on Service Cloud implementations and case management solutions
+- Assisted in data migration and configuration tasks
+- Learned Apex, Visualforce, and declarative automation tools
+
+**Technologies:** Salesforce Administration, Service Cloud, Apex Basics, Data Loader
+
+---
+
+## EDUCATION
+
+### 1. Lovely Professional University
+**Bachelor of Technology (B.Tech) - Computer Science**
+- Duration: 2019 – 2023
+- Grade: 7.8 CGPA
+- Location: Punjab, India
+
+### 2. The Air Force School (TAFS), Subroto Park
+**Class 11th - 12th (Senior Secondary)**
+- Stream: Mathematics and Computer Science
+- Duration: July 2017 – August 2019
+- Grade: 7.8 CGPA
+- Location: New Delhi, India
+
+---
+
+## SALESFORCE CERTIFICATIONS (5x Certified)
+
+### 1. Salesforce Certified Platform Administrator
+- **Issued:** February 22, 2026
+- **Credential ID:** 7476968
+- **Verification:** sforce.co/verifycerts
+
+### 2. Salesforce Certified Agentforce Specialist (AI Specialist)
+- **Issued:** January 12, 2025
+- **Credential ID:** 5632130
+- **Verification:** sforce.co/verifycerts
+
+### 3. Salesforce Certified AI Associate
+- **Issued:** December 22, 2024
+- **Credential ID:** 5504441
+- **Verification:** sforce.co/verifycerts
+
+### 4. Salesforce Certified Platform Developer I
+- **Issued:** June 22, 2024
+- **Credential ID:** 4617729
+- **Skills Validated:** Apex Programming, Lightning Flows
+- **Verification:** sforce.co/verifycerts
+
+### 5. Salesforce Certified Associate
+- **Issued:** November 2022
+- **Credential ID:** 2740409
+- **Verification:** sforce.co/verifycerts
+
+---
+
+## TECHNICAL SKILLS
+
+### Salesforce Development
+- Apex Programming (Classes, Triggers, Batch, Queueable, Future, Schedulable)
+- Lightning Web Components (LWC)
+- Visualforce Pages
+- Aura Components
+- SOQL & SOSL
+- Platform Events
+- Custom Metadata Types
+
+### Salesforce Administration
+- Service Cloud (Email-to-Case, Case Management, Escalation Rules)
+- Sales Cloud (Opportunities, Forecasting, Quotes)
+- Education Cloud
+- Flows & Process Builder
+- Approval Processes
+- Permission Sets & Profiles
+- Reports & Dashboards
+
+### Integrations & APIs
+- REST API
+- SOAP API
+- Salesforce Connect
+- Named Credentials
+- External Services
+
+### Managed Packages
+- AvSight (Aviation MRO - inscor__ namespace)
+- AuthVia
+- Accounting Seed
+- Avalara (Tax)
+
+### Tools & Platforms
+- VS Code with Salesforce Extensions
+- Salesforce CLI (SFDX)
+- Git & GitHub
+- Data Loader
+- Workbench
+
+### Other Technologies
+- JavaScript (ES6+)
+- HTML5 & CSS3
+- Java (Basics)
+
+---
+
+## KEY PROJECTS (For Portfolio Showcase)
+
+### 1. CRS Jet Spares - Aviation MRO Implementation
+- **Industry:** Aviation Parts & MRO
+- **Description:** Comprehensive Salesforce implementation for ISO 9001:2015 and AS9120B certified aviation parts company
+- **Features:** Custom Case Management, Email-to-Case with domain filtering, Customer Quote Management workflow, ERP integration via Rotabull
+- **Technologies:** Service Cloud, AvSight, Apex, LWC, Flows
+
+### 2. AI-Assisted Email Workflow System
+- **Description:** Designed intelligent email drafting system that generates acknowledgment replies when recipients are on leave
+- **Features:** Structured reviewer notes for non-technical managers, automated response generation
+- **Technologies:** Apex, Email Services, Custom Objects
+
+### 3. Dynamic Hyperlink Formula Field Generator
+- **Description:** Created formula fields displaying hyperlinks to multiple related records (Sales Orders, Customer Quotes, POs, ROs, RMAs, RFQs)
+- **Features:** Two-per-line formatting using MOD logic, dynamic record linking
+- **Technologies:** Formula Fields, SOQL
+
+### 4. Platform Event-Driven Modal System
+- **Description:** Built real-time notification system for Sales Order status changes
+- **Features:** LWC modal triggered by Platform Events, real-time updates
+- **Technologies:** LWC, Platform Events, Apex
+
+---
+
+## 🎨 DESIGN REQUIREMENTS - MODERN AESTHETICS
+
+### Visual Theme
+- **Style:** Glassmorphism + Neomorphism hybrid with futuristic tech vibes
+- **Mood:** Premium, innovative, cutting-edge developer portfolio
+- **Inspiration:** Apple design language meets Salesforce ecosystem aesthetics
+
+### Color Scheme
+- **Primary Gradient:** Deep blue to purple (#0D1B2A → #1B263B → #415A77)
+- **Accent Colors:** Salesforce Blue (#00A1E0), Electric Cyan (#00D4FF), Neon Purple (#8B5CF6)
+- **Glassmorphism:** Semi-transparent cards with blur (backdrop-filter: blur(20px))
+- **Dark Mode Default:** Rich dark backgrounds with glowing accents
+- **Light Mode:** Clean whites with subtle gradients
+
+### 🖱️ CUSTOM ANIMATED CURSOR
+- Replace default cursor with custom animated cursor
+- Cursor: Glowing dot with trailing particles effect
+- Cursor grows/morphs when hovering over interactive elements
+- Magnetic cursor effect on buttons (cursor gets pulled toward buttons)
+- Cursor leaves a subtle trail/glow path as it moves
+- Different cursor states: default (small dot), hover (expanded ring), click (pulse effect)
+- Cursor color changes based on section (matches section accent color)
+
+### 🌌 ANIMATED BACKGROUND ELEMENTS
+
+#### Floating Particles System
+- Subtle floating particles/orbs in the background (like stars or fireflies)
+- Particles move slowly in random directions
+- Particles have varying sizes, opacity, and blur levels
+- Interactive: Particles gently repel/attract from cursor position
+- Color: Gradient particles matching accent colors (cyan, purple, blue)
+
+#### Gradient Mesh Animation
+- Slowly morphing gradient blobs in the background
+- Smooth color transitions between Salesforce blues and purples
+- Creates depth and visual interest without distraction
+
+#### Grid Pattern Overlay
+- Subtle animated grid lines (like a tech blueprint)
+- Lines pulse/glow occasionally
+- Creates a "digital infrastructure" feel
+- Low opacity so it doesn't overpower content
+
+#### Floating Geometric Shapes
+- Abstract 3D shapes floating in background (cubes, spheres, torus)
+- Very subtle parallax effect on scroll
+- Glassmorphic/transparent with soft glow edges
+- Slow rotation animation
+
+#### Aurora/Northern Lights Effect
+- Subtle aurora-like color waves in hero section
+- Smooth flowing gradients
+- Creates ethereal, premium feel
+
+### ✨ MICRO-INTERACTIONS & ANIMATIONS
+
+#### On Page Load
+- Staggered fade-in animations for elements
+- Text reveal animations (typewriter effect for tagline)
+- Logo/name with glitch effect on load
+- Particle burst animation when page loads
+
+#### Scroll Animations
+- Elements fade/slide in as they enter viewport
+- Parallax scrolling on background elements
+- Progress indicator that fills as user scrolls
+- Smooth scroll with easing
+
+#### Hover Effects
+- Cards lift up with enhanced shadow on hover
+- Glassmorphic cards get brighter/more visible on hover
+- Skill tags/badges have bounce or shake effect
+- Social links have icon morph animations
+- Certification badges rotate slightly in 3D on hover
+- Magnetic button effect (button subtly moves toward cursor)
+
+#### Click/Interaction Effects
+- Ripple effect on button clicks
+- Subtle haptic-like feedback animations
+- Success animations for form submission
+- Confetti burst for special elements
+
+### 📐 LAYOUT & COMPONENTS
+
+#### Hero Section
+- Full viewport height with animated gradient background
+- Large, bold typography with gradient text effect
+- Animated avatar/profile image with floating effect
+- Glowing "Available for hire" badge (pulsing animation)
+- Scroll indicator with bouncing arrow
+- 3D floating certification badges orbiting profile picture
+- Particle effect concentrated around name
+
+#### Navigation
+- Glassmorphic floating navbar (appears on scroll)
+- Smooth hover underline animations
+- Active section indicator with glow
+- Mobile: Animated hamburger menu transformation
+- Navigation links have staggered hover effects
+
+#### Stats/Numbers Section
+- Animated counting numbers (count up effect)
+- Circular progress indicators for metrics
+- Glowing borders on stat cards
+- Icons with floating animation
+
+#### Skills Section
+- Interactive skill cloud with 3D hover effects
+- OR: Horizontal scrolling skill bars with animated fill
+- Tech stack icons with hover tooltips
+- Categories with accordion/tab animations
+- Skills orbit around a central element
+
+#### Experience Timeline
+- Vertical timeline with glowing line
+- Cards slide in alternating from left/right
+- Company logos with hover glow
+- Animated connection dots on timeline
+- Date badges with pulse effect
+
+#### Certifications Gallery
+- Hexagonal badge layout (Trailhead style)
+- Badges float slightly with subtle bob animation
+- Hover: 3D flip to show credential details
+- Verified checkmark with sparkle animation
+- Filter tabs with smooth transitions
+
+#### Projects Showcase
+- Bento grid layout with varying card sizes
+- Cards have depth with layered shadows
+- Hover: Image zoom + overlay with project details
+- Tech stack pills with hover effects
+- "View Project" buttons with arrow animation
+- Carousel option with smooth transitions
+
+#### Contact Section
+- Floating contact form with glassmorphic styling
+- Input fields with animated borders on focus
+- Send button with loading state animation
+- Success message with confetti
+- Social links with icon bounce effects
+
+### 🌙 DARK/LIGHT MODE
+- Toggle switch with sun/moon animation
+- Smooth color transition between modes
+- Mode preference saved to localStorage
+- System preference detection
+
+### 📱 RESPONSIVE DESIGN
+- Mobile-first approach
+- Animations simplified/reduced on mobile for performance
+- Touch-friendly interactions
+- Gesture support where applicable
+
+### ⚡ PERFORMANCE CONSIDERATIONS
+- Use CSS animations over JavaScript where possible
+- Implement Intersection Observer for scroll animations
+- Lazy load images and heavy animations
+- RequestAnimationFrame for smooth 60fps animations
+- Reduce motion option for accessibility (prefers-reduced-motion)
+
+### 🛠️ TECHNICAL IMPLEMENTATION
+
+#### Recommended Libraries/Approaches
+- **GSAP** for complex timeline animations
+- **Three.js** or **Particles.js** for background effects
+- **Framer Motion** if using React
+- **Lenis** for smooth scrolling
+- **Vanilla-tilt.js** for 3D card effects
+- CSS Custom Properties for theming
+
+#### Custom Cursor Implementation
+```css
+/* Hide default cursor */
+* { cursor: none; }
+
+/* Custom cursor elements */
+.cursor-dot { /* Main cursor */ }
+.cursor-ring { /* Outer ring */ }
+.cursor-trail { /* Trail effect */ }
+```
+
+#### Background Particles (conceptual)
+```javascript
+// Particles should:
+// - Float randomly
+// - React to mouse position
+// - Have varying properties
+// - Not impact performance
+```
+
+---
+
+## SECTIONS STRUCTURE
+
+1. **Hero** - Full screen, animated intro
+2. **About** - Professional summary with floating image
+3. **Stats** - Animated metrics (4 Years, 5 Certs, X Projects, X Clients)
+4. **Skills** - Interactive tech stack visualization
+5. **Experience** - Animated timeline
+6. **Certifications** - Hexagonal badge gallery
+7. **Projects** - Bento grid showcase
+8. **Education** - Clean card layout
+9. **Contact** - Glassmorphic form + social links
+10. **Footer** - Minimal with back-to-top animation
+
+---
+
+## ADDITIONAL FEATURES
+- Easter egg: Konami code triggers confetti explosion
+- Custom 404 page with fun animation
+- Loading screen with progress animation
+- Smooth page transitions
+- SEO optimized with meta tags
+- Open Graph tags for LinkedIn sharing
+- Structured data for search engines
+- Print-friendly styles for resume
+
+---
+
+## ACCESSIBILITY
+- Respect `prefers-reduced-motion`
+- Maintain color contrast ratios
+- Keyboard navigation support
+- Screen reader friendly
+- Focus states visible
+- Alt text for images
+
+---
+
+Build this as a single-page React application OR a vanilla HTML/CSS/JS site with modern tooling. Prioritize visual impact while maintaining performance and accessibility.
