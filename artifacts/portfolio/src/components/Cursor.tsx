@@ -68,17 +68,15 @@ export function Cursor() {
         !!target.closest("button");
 
       if (isInteractive) {
-        ring.style.width = "48px";
-        ring.style.height = "48px";
-        ring.style.borderColor = "rgba(0, 161, 224, 0.9)";
-        ring.style.backgroundColor = "rgba(0, 161, 224, 0.08)";
-        dot.style.opacity = "0";
+        ring.style.width = "44px";
+        ring.style.height = "44px";
+        ring.style.borderColor = "rgba(0, 161, 224, 0.85)";
+        ring.style.backgroundColor = "rgba(0, 161, 224, 0.06)";
       } else {
         ring.style.width = "32px";
         ring.style.height = "32px";
         ring.style.borderColor = "rgba(0, 161, 224, 0.5)";
         ring.style.backgroundColor = "transparent";
-        dot.style.opacity = visible ? "1" : "0";
       }
     };
 
