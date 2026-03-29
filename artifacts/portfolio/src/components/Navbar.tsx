@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/hooks/use-theme";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const RESUME_URL = "https://drive.google.com/file/d/1PMkIDKkKxWJ36AIUhfl_LLtZOemOPMSR/view?usp=sharing";
 
 const LINKS = [
   { name: "Home", href: "#home" },
@@ -127,7 +129,17 @@ export function Navbar() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 group"
+              >
+                <FileText size={15} className="group-hover:scale-110 transition-transform" />
+                View Resume
+              </a>
+
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
@@ -178,6 +190,19 @@ export function Navbar() {
                   {link.name}
                 </motion.a>
               ))}
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: LINKS.length * 0.1 }}
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-6 py-3 rounded-full border border-primary text-primary text-lg mt-2"
+              >
+                <FileText size={18} />
+                View Resume
+              </motion.a>
             </div>
           </motion.div>
         )}
