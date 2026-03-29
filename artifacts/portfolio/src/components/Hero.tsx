@@ -13,19 +13,6 @@ export function Hero() {
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 flex flex-col items-start text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 px-4 py-2 rounded-full glass-card mb-6"
-          >
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="text-sm font-medium text-foreground/80">Available for New Opportunities</span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,14 +23,45 @@ export function Hero() {
             <span className="text-gradient text-5xl md:text-6xl lg:text-7xl whitespace-nowrap">Piyush Dhaked</span>
           </motion.h1>
 
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-2xl md:text-3xl font-display text-muted-foreground mb-6"
+            className="flex flex-col gap-1 mb-6"
           >
-            Salesforce Developer & Tech Lead
-          </motion.h2>
+            <h2 className="text-2xl md:text-3xl font-display text-muted-foreground">
+              Salesforce Developer{" "}
+              <a
+                href="https://www.metadologie.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                @ Metadologie Inc
+              </a>
+            </h2>
+            <div className="flex items-center gap-3 mt-1">
+              <a
+                href="https://maps.app.goo.gl/xRoTsfy1VsHqmem68"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <MapPin size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                Jaipur, Rajasthan, India
+              </a>
+              <span className="text-border">·</span>
+              <a
+                href="https://www.metadologie.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <ExternalLink size={12} />
+                metadologie.com
+              </a>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -75,11 +93,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
           className="flex-1 relative hidden md:block"
         >
-          <div className="relative w-full max-w-md mx-auto aspect-square rounded-full animate-float">
+          <div className="relative w-full max-w-md mx-auto aspect-square rounded-full">
             <div className="absolute inset-0 rounded-full border border-primary/20 shadow-lg"></div>
             <div className="absolute inset-4 rounded-full border border-border/30 border-dashed animate-spin-slow"></div>
             <img 
-              src={`${import.meta.env.BASE_URL}images/profile.png`} 
+              src={`${import.meta.env.BASE_URL}images/piyush.jpeg`}
               alt="Piyush Dhaked" 
               className="absolute inset-0 w-full h-full object-cover rounded-full p-2"
             />
