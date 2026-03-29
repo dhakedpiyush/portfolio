@@ -1,15 +1,51 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink, MapPin } from "lucide-react";
 
+const FULL_NAME = "Piyush Dhaked";
+const TYPE_SPEED = 90;
+const START_DELAY = 600;
+
 export function Hero() {
+  const [displayed, setDisplayed] = useState("");
+  const [cursorVisible, setCursorVisible] = useState(true);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    let typingTimer: ReturnType<typeof setTimeout>;
+
+    const startTimer = setTimeout(() => {
+      const type = () => {
+        index++;
+        setDisplayed(FULL_NAME.slice(0, index));
+        if (index < FULL_NAME.length) {
+          typingTimer = setTimeout(type, TYPE_SPEED);
+        } else {
+          setDone(true);
+          setTimeout(() => setCursorVisible(false), 1200);
+        }
+      };
+      type();
+    }, START_DELAY);
+
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(typingTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (done) return;
+    const blink = setInterval(() => setCursorVisible(v => !v), 530);
+    return () => clearInterval(blink);
+  }, [done]);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-aurora">
-      {/* Background Overlay to ensure text readability */}
       <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-0"></div>
-      
-      {/* Animated abstract shapes */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse z-0"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: "2s" }}></div>
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 flex flex-col items-start text-left">
@@ -20,7 +56,23 @@ export function Hero() {
             className="font-extrabold mb-4"
           >
             <span className="block text-3xl md:text-4xl text-foreground/70 font-medium mb-1">Hi, I'm</span>
-            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl whitespace-nowrap">Piyush Dhaked</span>
+            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl whitespace-nowrap inline-flex items-center">
+              {displayed}
+              <span
+                style={{
+                  display: "inline-block",
+                  width: "3px",
+                  height: "0.85em",
+                  marginLeft: "4px",
+                  borderRadius: "2px",
+                  verticalAlign: "middle",
+                  background: "hsl(var(--primary))",
+                  opacity: cursorVisible ? 1 : 0,
+                  transition: done ? "opacity 0.4s ease" : "none",
+                  flexShrink: 0,
+                }}
+              />
+            </span>
           </motion.h1>
 
           <motion.div
@@ -96,16 +148,16 @@ export function Hero() {
           <div className="relative w-full max-w-md mx-auto aspect-square rounded-full">
             <div className="absolute inset-0 rounded-full border border-primary/20 shadow-lg"></div>
             <div className="absolute inset-4 rounded-full border border-border/30 border-dashed animate-spin-slow"></div>
-            <img 
+            <img
               src={`${import.meta.env.BASE_URL}images/piyush.jpeg`}
-              alt="Piyush Dhaked" 
+              alt="Piyush Dhaked"
               className="absolute inset-0 w-full h-full object-cover rounded-full p-2"
             />
           </div>
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
