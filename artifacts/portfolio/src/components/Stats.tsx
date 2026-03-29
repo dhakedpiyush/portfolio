@@ -24,7 +24,7 @@ export function Stats() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex flex-col items-center text-center px-4"
             >
-              <div className="text-4xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50 mb-2">
+              <div className="text-4xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/60 mb-2">
                 {inView ? (
                   <CountUp end={stat.value} duration={2.5} separator="," />
                 ) : (

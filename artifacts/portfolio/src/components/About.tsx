@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export function About() {
   return (
@@ -45,22 +45,34 @@ export function About() {
             className="space-y-6"
           >
             <div className="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <GraduationCap size={64} />
+              <div className="flex items-start gap-4 mb-4">
+                <img
+                  src="/images/logo-lpu.png"
+                  alt="Lovely Professional University"
+                  className="w-14 h-14 object-contain rounded-xl bg-white p-1 shadow-sm flex-shrink-0"
+                />
+                <div>
+                  <h4 className="text-xl font-bold mb-1">B.Tech in Computer Science</h4>
+                  <p className="text-primary font-medium">Lovely Professional University</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">2019 – 2023 · 7.8 CGPA</p>
+                </div>
               </div>
-              <h4 className="text-xl font-bold mb-2">B.Tech in Computer Science</h4>
-              <p className="text-primary mb-1">Lovely Professional University</p>
-              <p className="text-sm text-muted-foreground mb-4">2019 - 2023 | 7.8 CGPA</p>
               <p className="text-foreground/70">Foundational knowledge in software engineering, algorithms, and object-oriented programming.</p>
             </div>
 
             <div className="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Award size={64} />
+              <div className="flex items-start gap-4">
+                <img
+                  src="/images/logo-tafs.png"
+                  alt="The Air Force School"
+                  className="w-14 h-14 object-contain rounded-xl bg-white p-1 shadow-sm flex-shrink-0"
+                />
+                <div>
+                  <h4 className="text-xl font-bold mb-1">Senior Secondary (PCM)</h4>
+                  <p className="text-primary font-medium">The Air Force School</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">2017 – 2019</p>
+                </div>
               </div>
-              <h4 className="text-xl font-bold mb-2">Senior Secondary (PCM)</h4>
-              <p className="text-primary mb-1">The Air Force School</p>
-              <p className="text-sm text-muted-foreground mb-4">2017 - 2019 | 7.8 CGPA</p>
             </div>
 
             <div className="glass-card p-6 rounded-2xl flex items-center gap-4">
