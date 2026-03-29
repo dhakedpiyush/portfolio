@@ -73,6 +73,7 @@ export function About() {
                   <p className="text-sm text-muted-foreground mt-0.5">2017 – 2019</p>
                 </div>
               </div>
+              <p className="text-foreground/70 mt-4">Started learning C++ and Java.</p>
             </div>
 
             <div className="glass-card p-6 rounded-2xl flex items-center gap-4">
