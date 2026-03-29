@@ -3,7 +3,7 @@ import { Briefcase } from "lucide-react";
 
 const EXPERIENCES = [
   {
-    role: "Salesforce Developer & Tech Lead",
+    role: "Salesforce Developer & Project Lead",
     company: "Metadologie",
     period: "Dec 2024 – Present",
     location: "Jaipur, Rajasthan",
