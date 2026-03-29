@@ -90,7 +90,7 @@ export function Certifications() {
   return (
     <section
       id="certifications"
-      className="py-24 relative z-20 bg-black/20"
+      className="py-24 relative z-20 section-alt"
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div

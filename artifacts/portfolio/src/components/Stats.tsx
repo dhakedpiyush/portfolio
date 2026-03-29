@@ -13,9 +13,9 @@ export function Stats() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
 
   return (
-    <section className="py-12 border-y border-white/5 bg-background/50 backdrop-blur-sm relative z-20">
+    <section className="py-12 border-y border-border/20 bg-background/50 backdrop-blur-sm relative z-20 stats-section">
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x divide-white/5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x divide-border/30">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}

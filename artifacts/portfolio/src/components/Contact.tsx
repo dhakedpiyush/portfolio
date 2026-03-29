@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative z-20 bg-black/20">
+    <section id="contact" className="py-24 relative z-20 section-alt">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
           <motion.div
@@ -85,7 +85,7 @@ export function Contact() {
                   type="text" 
                   id="name" 
                   required
-                  className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                   placeholder="John Doe"
                 />
               </div>
@@ -96,7 +96,7 @@ export function Contact() {
                   type="email" 
                   id="email" 
                   required
-                  className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                   placeholder="john@example.com"
                 />
               </div>
@@ -107,7 +107,7 @@ export function Contact() {
                   id="message" 
                   rows={4}
                   required
-                  className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                   placeholder="Hello Piyush..."
                 ></textarea>
               </div>

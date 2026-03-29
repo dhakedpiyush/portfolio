@@ -27,7 +27,7 @@ export function About() {
             <h3 className="text-2xl font-bold mb-6 text-primary">Professional Summary</h3>
             <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
               <p>
-                I am a passionate <strong className="text-foreground">Salesforce Developer & Tech Lead</strong> with 4 years of experience architecting and implementing scalable B2B solutions. I specialize in complex Apex, Lightning Web Components (LWC), and Service Cloud implementations.
+                I am a passionate <strong className="text-foreground">Salesforce Developer & Project Lead</strong> with 4 years of experience architecting and implementing scalable B2B solutions. I specialize in complex Apex, Lightning Web Components (LWC), and Service Cloud implementations.
               </p>
               <p>
                 My expertise lies in translating intricate business requirements into robust technical architectures. I have deep hands-on experience with managed packages like <strong>AvSight, AuthVia, and Accounting Seed</strong>.
