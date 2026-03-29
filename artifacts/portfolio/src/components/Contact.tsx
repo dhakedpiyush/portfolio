@@ -38,7 +38,7 @@ export function Contact() {
           >
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Let's build something <span className="text-gradient">extraordinary.</span></h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-md">
-              Available for referrals. Whether you have a question, want to connect, or just want to say hi — I'll try my best to get back to you!
+              My team is growing. If anyone is looking for a new challenge, I'm available for referrals!
             </p>
 
             <div className="space-y-6">
