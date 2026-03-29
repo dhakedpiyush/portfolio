@@ -96,13 +96,6 @@ export function Navbar() {
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             
-            <a 
-              href="#contact" 
-              className="hidden md:block px-5 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium text-sm"
-            >
-              Hire Me
-            </a>
-
             <button
               className="md:hidden p-2 text-foreground"
               onClick={() => setMobileMenuOpen(true)}

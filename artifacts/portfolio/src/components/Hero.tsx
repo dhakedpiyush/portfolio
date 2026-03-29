@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, ExternalLink } from "lucide-react";
+import { ArrowDown, ExternalLink, MapPin } from "lucide-react";
 
 export function Hero() {
   return (
