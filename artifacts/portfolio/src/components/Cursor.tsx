@@ -1,93 +1,141 @@
-import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export function Cursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
-  const [hidden, setHidden] = useState(true);
-
-  // Smooth springs for cursor movement
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorX = useSpring(position.x, springConfig);
-  const cursorY = useSpring(position.y, springConfig);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
-      if (hidden) setHidden(false);
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let rafId: number;
+    let visible = false;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      ringX = lerp(ringX, mouseX, 0.18);
+      ringY = lerp(ringY, mouseY, 0.18);
+
+      dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+
+      rafId = requestAnimationFrame(tick);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.classList.contains("interactive")
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
+    const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!visible) {
+        visible = true;
+        dot.style.opacity = "1";
+        ring.style.opacity = "1";
+        ringX = mouseX;
+        ringY = mouseY;
       }
     };
 
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
-    const handleMouseLeave = () => setHidden(true);
-    const handleMouseEnter = () => setHidden(false);
+    const onLeave = () => {
+      visible = false;
+      dot.style.opacity = "0";
+      ring.style.opacity = "0";
+    };
 
-    window.addEventListener("mousemove", updatePosition);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-    window.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("mouseenter", handleMouseEnter);
+    const onEnter = () => {
+      visible = true;
+      dot.style.opacity = "1";
+      ring.style.opacity = "1";
+    };
+
+    const onDown = () => {
+      dot.style.transform += " scale(0.7)";
+      ring.style.transform += " scale(0.85)";
+    };
+
+    const onUp = () => {};
+
+    const onOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const isInteractive =
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        !!target.closest("a") ||
+        !!target.closest("button");
+
+      if (isInteractive) {
+        ring.style.width = "48px";
+        ring.style.height = "48px";
+        ring.style.borderColor = "rgba(0, 161, 224, 0.9)";
+        ring.style.backgroundColor = "rgba(0, 161, 224, 0.08)";
+        dot.style.opacity = "0";
+      } else {
+        ring.style.width = "32px";
+        ring.style.height = "32px";
+        ring.style.borderColor = "rgba(0, 161, 224, 0.5)";
+        ring.style.backgroundColor = "transparent";
+        dot.style.opacity = visible ? "1" : "0";
+      }
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("mouseleave", onLeave);
+    window.addEventListener("mouseenter", onEnter);
+    window.addEventListener("mousedown", onDown);
+    window.addEventListener("mouseup", onUp);
+    window.addEventListener("mouseover", onOver, { passive: true });
+
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("mousemove", updatePosition);
-      window.removeEventListener("mouseover", handleMouseOver);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("mouseenter", handleMouseEnter);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("mouseenter", onEnter);
+      window.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mouseup", onUp);
+      window.removeEventListener("mouseover", onOver);
     };
-  }, [cursorX, cursorY, hidden]);
-
-  if (typeof window === "undefined" || hidden) return null;
+  }, []);
 
   return (
     <>
-      <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full mix-blend-difference"
+      <div
+        ref={dotRef}
         style={{
-          x: cursorX,
-          y: cursorY,
-          width: 32,
-          height: 32,
-          backgroundColor: isHovered ? "white" : "rgba(0, 212, 255, 0.5)",
-          border: isHovered ? "none" : "2px solid rgba(0, 161, 224, 0.8)",
-        }}
-        animate={{
-          scale: isClicking ? 0.8 : isHovered ? 2.5 : 1,
-          opacity: hidden ? 0 : 1,
-        }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 z-[10000] pointer-events-none rounded-full bg-primary"
-        style={{
-          x: position.x - 4,
-          y: position.y - 4,
+          position: "fixed",
+          top: 0,
+          left: 0,
           width: 8,
           height: 8,
+          borderRadius: "50%",
+          backgroundColor: "rgba(0, 161, 224, 1)",
+          pointerEvents: "none",
+          zIndex: 10000,
+          opacity: 0,
+          willChange: "transform",
         }}
-        animate={{
-          scale: isHovered ? 0 : 1,
-          opacity: hidden ? 0 : 1,
+      />
+      <div
+        ref={ringRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: 32,
+          height: 32,
+          borderRadius: "50%",
+          border: "1.5px solid rgba(0, 161, 224, 0.5)",
+          backgroundColor: "transparent",
+          pointerEvents: "none",
+          zIndex: 9999,
+          opacity: 0,
+          willChange: "transform",
+          transition: "width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
         }}
       />
     </>
