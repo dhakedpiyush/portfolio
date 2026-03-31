@@ -17,6 +17,7 @@ const PROJECTS = [
     colSpan: "md:col-span-2",
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
+    cloudLogoSize: 620,
     bullets: [
       "Integrated AuthVia payments for managing payments on quotations and orders.",
       "Implemented Service Cloud end-to-end for customer support operations.",
@@ -57,6 +58,7 @@ const PROJECTS = [
     colSpan: "md:col-span-1",
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
+    cloudLogoSize: 620,
     bullets: [
       "Banking Service Console with Email-to-Case & Web-to-Case.",
       "Apex Triggers, Classes, Flows, and Approval Processes.",
@@ -118,6 +120,7 @@ const PROJECTS = [
     colSpan: "md:col-span-2",
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
+    cloudLogoSize: 620,
     bullets: [
       "Optimized existing functionality, delivered new requirements within tight deadlines, and improved test class coverage for production.",
       "Facilitated client communication for requirement gathering, conducted bi-weekly feature demonstrations and ensured smooth production deployments.",
@@ -212,8 +215,8 @@ export function Projects() {
                       (project as any).cloudLogoRounded ? "rounded-2xl" : ""
                     }`}
                     style={{
-                      width: "420px",
-                      height: "420px",
+                      width: `${(project as any).cloudLogoSize ?? 420}px`,
+                      height: `${(project as any).cloudLogoSize ?? 420}px`,
                       transform: "rotateY(-22deg) translateX(22%)",
                       transformOrigin: "right center",
                       opacity: 0.3,
