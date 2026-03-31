@@ -204,7 +204,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(0,161,224,0.3)] disabled:opacity-70 disabled:cursor-not-allowed group"
+                className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 hover:shadow-[0_4px_16px_rgba(0,161,224,0.25)] transition-all shadow-[0_2px_8px_rgba(0,0,0,0.15)] disabled:opacity-70 disabled:cursor-not-allowed group"
               >
                 {isSubmitting ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -219,19 +219,19 @@ export function Contact() {
               </button>
 
               {/* Salesforce badge */}
-              <div className="flex items-center justify-center gap-2.5 pt-2">
-                <div className="flex-1 h-px bg-border/40" />
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00A1E0]/8 border border-[#00A1E0]/15 hover:border-[#00A1E0]/30 transition-colors">
+              <div className="flex items-center gap-3 pt-1">
+                <div className="flex-1 h-px bg-border/30" />
+                <div className="flex items-center gap-1.5">
                   <img
                     src="/images/sflogo.png"
                     alt="Salesforce"
-                    className="w-5 h-5 object-contain"
+                    className="w-4 h-4 object-contain"
                   />
-                  <span className="text-xs font-medium text-muted-foreground whitespace-nowrap">
-                    Built with <span className="text-[#00A1E0] font-semibold">Salesforce</span> Web-to-Case
+                  <span className="text-xs text-muted-foreground/70 whitespace-nowrap">
+                    Built with <span className="text-[#00A1E0]/90 font-medium">Salesforce</span> Web-to-Case
                   </span>
                 </div>
-                <div className="flex-1 h-px bg-border/40" />
+                <div className="flex-1 h-px bg-border/30" />
               </div>
             </form>
           </motion.div>
