@@ -200,24 +200,24 @@ export function Projects() {
                   style={{ background: `linear-gradient(90deg, ${project.accentColor}, transparent)` }}
                 />
 
-                {/* Tilted cloud logo — right side, perspective tilt */}
+                {/* Cloud logo — right side, rotateX: top pushed back, bottom stays */}
                 <div
-                  className="absolute bottom-5 right-3 pointer-events-none select-none"
-                  style={{
-                    perspective: "260px",
-                    perspectiveOrigin: "center center",
-                  }}
+                  className="absolute inset-y-0 right-0 flex items-center justify-end pointer-events-none select-none"
+                  style={{ perspective: "600px", perspectiveOrigin: "right center" }}
                 >
                   <img
                     src={project.cloudLogo}
                     alt={project.cloudLogoAlt}
-                    className={`w-20 h-20 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-105 ${
-                      (project as any).cloudLogoRounded ? "rounded-xl" : ""
+                    className={`object-contain transition-all duration-500 group-hover:opacity-40 ${
+                      (project as any).cloudLogoRounded ? "rounded-2xl" : ""
                     }`}
                     style={{
-                      transform: "rotateY(-22deg) rotateZ(2deg)",
-                      opacity: 0.55,
-                      filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.35))",
+                      width: "220px",
+                      height: "220px",
+                      transform: "rotateX(32deg)",
+                      transformOrigin: "bottom center",
+                      opacity: 0.28,
+                      filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.5))",
                     }}
                   />
                 </div>
