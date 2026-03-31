@@ -203,28 +203,6 @@ export function Projects() {
                   style={{ background: `linear-gradient(90deg, ${project.accentColor}, transparent)` }}
                 />
 
-                {/* Cloud logo — right edge clipped ~20%, large, rotateY only */}
-                <div
-                  className="absolute inset-y-0 right-0 flex items-center justify-end pointer-events-none select-none"
-                  style={{ perspective: "600px", perspectiveOrigin: "right center" }}
-                >
-                  <img
-                    src={project.cloudLogo}
-                    alt={project.cloudLogoAlt}
-                    className={`object-contain transition-all duration-500 group-hover:opacity-40 ${
-                      (project as any).cloudLogoRounded ? "rounded-2xl" : ""
-                    }`}
-                    style={{
-                      width: `${(project as any).cloudLogoSize ?? 420}px`,
-                      height: `${(project as any).cloudLogoSize ?? 420}px`,
-                      transform: "rotateY(-22deg) translateX(8%)",
-                      transformOrigin: "right center",
-                      opacity: 0.3,
-                      filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.5))",
-                    }}
-                  />
-                </div>
-
                 {/* Current project pulsing ring */}
                 {project.current && (
                   <span className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-primary/20 text-primary border border-primary/30 z-10">
@@ -254,7 +232,14 @@ export function Projects() {
                         >
                           {project.category.split(" · ")[0]}
                         </span>
-                        <span className="text-xs text-muted-foreground">{project.period}</span>
+                        <img
+                          src={project.cloudLogo}
+                          alt={project.cloudLogoAlt}
+                          className={`object-contain flex-shrink-0 ${
+                            (project as any).cloudLogoRounded ? "rounded-md" : ""
+                          }`}
+                          style={{ width: "22px", height: "22px" }}
+                        />
                       </div>
                       <h3 className="text-base md:text-lg font-bold text-foreground leading-snug">
                         {project.title}
