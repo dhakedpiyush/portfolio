@@ -221,9 +221,9 @@ export function Contact() {
               {/* Brevo + Salesforce badge */}
               <div className="flex items-center gap-3 pt-1">
                 <div className="flex-1 h-px bg-border/30" />
-                <div className="flex items-center gap-2 flex-wrap justify-center">
+                <div className="flex items-center gap-1.5 flex-wrap justify-center">
                   <span className="text-xs text-muted-foreground/60">Built with</span>
-                  <img src="/images/brevo-logo.png" alt="Brevo" className="h-5 object-contain" />
+                  <img src="/images/brevo-logo.png" alt="Brevo" className="w-6 h-6 object-contain" />
                   <span className="text-muted-foreground/50 text-xs">&</span>
                   <img src="/images/sflogo.png" alt="Salesforce" className="w-6 h-6 object-contain" />
                   <span className="text-xs text-muted-foreground/60 whitespace-nowrap">
