@@ -217,7 +217,7 @@ export function Projects() {
                     style={{
                       width: `${(project as any).cloudLogoSize ?? 420}px`,
                       height: `${(project as any).cloudLogoSize ?? 420}px`,
-                      transform: "rotateY(-22deg)",
+                      transform: "rotateY(-22deg) translateX(8%)",
                       transformOrigin: "right center",
                       opacity: 0.3,
                       filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.5))",
