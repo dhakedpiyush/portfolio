@@ -24,7 +24,7 @@ export function Footer() {
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
-              <img src="/images/brevo-logo.png" alt="Brevo" className="h-4 object-contain" />
+              <img src="/images/brevo-logo.png" alt="Brevo" className="h-4 w-auto object-contain" />
               <span>Brevo</span>
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
