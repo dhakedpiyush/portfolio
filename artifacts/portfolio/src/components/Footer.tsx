@@ -22,6 +22,11 @@ export function Footer() {
               <img src="/images/sf-logo-footer.png" alt="Salesforce" className="w-5 h-5 object-contain" />
               <span>Salesforce</span>
             </span>
+            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+            <span className="flex items-center gap-1.5">
+              <img src="/images/claude-logo.png" alt="Claude" className="w-5 h-5 object-contain" />
+              <span>Claude</span>
+            </span>
           </div>
           <span className="w-1 h-1 rounded-full bg-primary"></span>
           <a href="#home" className="hover:text-primary transition-colors">Back to Top</a>
