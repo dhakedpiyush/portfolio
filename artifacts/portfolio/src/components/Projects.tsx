@@ -18,6 +18,7 @@ const PROJECTS = [
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
     cloudLogoSize: 620,
+    cloudLogoDisplaySize: 36,
     bullets: [
       "Integrated AuthVia payments for managing payments on quotations and orders.",
       "Implemented Service Cloud end-to-end for customer support operations.",
@@ -59,6 +60,7 @@ const PROJECTS = [
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
     cloudLogoSize: 620,
+    cloudLogoDisplaySize: 36,
     bullets: [
       "Banking Service Console with Email-to-Case & Web-to-Case.",
       "Apex Triggers, Classes, Flows, and Approval Processes.",
@@ -79,6 +81,7 @@ const PROJECTS = [
     colSpan: "md:col-span-1",
     cloudLogo: "/images/manufacturing-cloud.png",
     cloudLogoAlt: "Manufacturing Cloud",
+    cloudLogoDisplaySize: 30,
     bullets: [
       "Optimized existing functionality within tight deadlines.",
       "Improved test class coverage for production readiness.",
@@ -100,6 +103,7 @@ const PROJECTS = [
     cloudLogo: "/images/education-cloud.png",
     cloudLogoAlt: "Education Cloud",
     cloudLogoRounded: true,
+    cloudLogoDisplaySize: 30,
     bullets: [
       "Application Form Module with OmniStudio & LWC.",
       "Apex Triggers & LWCs for Deferral Form and Fees Payment.",
@@ -121,6 +125,7 @@ const PROJECTS = [
     cloudLogo: "/images/service-cloud.png",
     cloudLogoAlt: "Service Cloud",
     cloudLogoSize: 620,
+    cloudLogoDisplaySize: 36,
     bullets: [
       "Optimized existing functionality, delivered new requirements within tight deadlines, and improved test class coverage for production.",
       "Facilitated client communication for requirement gathering, conducted bi-weekly feature demonstrations and ensured smooth production deployments.",
@@ -142,6 +147,7 @@ const PROJECTS = [
     colSpan: "md:col-span-1",
     cloudLogo: "/images/manufacturing-cloud.png",
     cloudLogoAlt: "Manufacturing Cloud",
+    cloudLogoDisplaySize: 30,
     bullets: [
       "Migrated standard Quote to CPQ — formula fields, flows, templates.",
       "Configured products and ensured smooth CPQ environment functionality.",
@@ -238,7 +244,7 @@ export function Projects() {
                           className={`object-contain flex-shrink-0 ${
                             (project as any).cloudLogoRounded ? "rounded-md" : ""
                           }`}
-                          style={{ width: "22px", height: "22px" }}
+                          style={{ width: `${(project as any).cloudLogoDisplaySize ?? 22}px`, height: `${(project as any).cloudLogoDisplaySize ?? 22}px` }}
                         />
                       </div>
                       <h3 className="text-base md:text-lg font-bold text-foreground leading-snug">
