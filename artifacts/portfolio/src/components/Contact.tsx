@@ -228,7 +228,7 @@ export function Contact() {
                     className="w-4 h-4 object-contain"
                   />
                   <span className="text-xs text-muted-foreground/70 whitespace-nowrap">
-                    Built with <span className="text-[#00A1E0]/90 font-medium">Salesforce</span> Web-to-Case
+                    Built with <span className="text-[#00A1E0]/90 font-medium">Salesforce</span>
                   </span>
                 </div>
                 <div className="flex-1 h-px bg-border/30" />
