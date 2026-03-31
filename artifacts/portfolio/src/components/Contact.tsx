@@ -223,7 +223,7 @@ export function Contact() {
                 <div className="flex-1 h-px bg-border/30" />
                 <div className="flex items-center gap-1.5 flex-wrap justify-center">
                   <span className="text-xs text-muted-foreground/60">Built with</span>
-                  <img src="/images/brevo-logo.png" alt="Brevo" className="h-6 w-auto object-contain" />
+                  <img src="/images/brevo-logo.png" alt="Brevo" className="h-4 w-auto object-contain" />
                   <span className="text-muted-foreground/50 text-xs">&</span>
                   <img src="/images/sflogo.png" alt="Salesforce" className="w-6 h-6 object-contain" />
                   <span className="text-xs text-muted-foreground/60 whitespace-nowrap">

@@ -9,28 +9,43 @@ export function Footer() {
           <span className="hidden sm:inline">Built with</span>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1.5">
-              <img src="/images/react-logo.png" alt="React" className="w-5 h-5 object-contain" />
-              <span>React</span>
+              <img
+                src="/images/react-logo.png"
+                alt="React"
+                className="w-5 h-5 object-contain"
+              />
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
-              <img src="/images/tailwind-logo.png" alt="Tailwind" className="w-5 h-5 object-contain" />
-              <span>Tailwind</span>
+              <img
+                src="/images/tailwind-logo.png"
+                alt="Tailwind"
+                className="w-5 h-5 object-contain"
+              />
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
-              <img src="/images/sf-logo-footer.png" alt="Salesforce" className="w-5 h-5 object-contain" />
-              <span>Salesforce</span>
+              <img
+                src="/images/sf-logo-footer.png"
+                alt="Salesforce"
+                className="w-5 h-5 object-contain"
+              />
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
-              <img src="/images/brevo-logo.png" alt="Brevo" className="h-4 w-auto object-contain" />
-              <span>Brevo</span>
+              <img
+                src="/images/brevo-logo.png"
+                alt="Brevo"
+                className="h-4 w-auto object-contain"
+              />
             </span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
-              <img src="/images/claude-logo.png" alt="Claude" className="w-5 h-5 object-contain" />
-              <span>Claude</span>
+              <img
+                src="/images/claude-logo.png"
+                alt="Claude"
+                className="w-5 h-5 object-contain"
+              />
             </span>
           </div>
         </div>
