@@ -28,8 +28,6 @@ export function Footer() {
               <span>Claude</span>
             </span>
           </div>
-          <span className="w-1 h-1 rounded-full bg-primary"></span>
-          <a href="#home" className="hover:text-primary transition-colors">Back to Top</a>
         </div>
       </div>
     </footer>
