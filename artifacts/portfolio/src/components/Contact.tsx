@@ -217,6 +217,22 @@ export function Contact() {
                   </>
                 )}
               </button>
+
+              {/* Salesforce badge */}
+              <div className="flex items-center justify-center gap-2.5 pt-2">
+                <div className="flex-1 h-px bg-border/40" />
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00A1E0]/8 border border-[#00A1E0]/15 hover:border-[#00A1E0]/30 transition-colors">
+                  <img
+                    src="/images/sflogo.png"
+                    alt="Salesforce"
+                    className="w-5 h-5 object-contain"
+                  />
+                  <span className="text-xs font-medium text-muted-foreground whitespace-nowrap">
+                    Built with <span className="text-[#00A1E0] font-semibold">Salesforce</span> Web-to-Case
+                  </span>
+                </div>
+                <div className="flex-1 h-px bg-border/40" />
+              </div>
             </form>
           </motion.div>
         </div>
