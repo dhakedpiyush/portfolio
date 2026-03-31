@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Portfolio Message Received</title>
+</head>
+<body style="margin:0;padding:0;background-color:#0a0f1a;font-family:'Segoe UI',Arial,sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0f1a;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#0F1E35;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);box-shadow:0 4px 40px rgba(0,0,0,0.5);">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding:36px 40px 24px;text-align:center;">
+              <!-- Alert badge -->
+              <div style="display:inline-block;background:rgba(0,161,224,0.15);border:1px solid rgba(0,161,224,0.3);border-radius:50px;padding:6px 18px;margin-bottom:20px;">
+                <span style="font-size:12px;font-weight:700;letter-spacing:2px;color:#00A1E0;text-transform:uppercase;">📬 New Message</span>
+              </div>
+              <h1 style="margin:0;font-size:24px;font-weight:700;color:#f1f5f9;line-height:1.3;">
+                Someone reached out via your portfolio
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Accent line -->
+          <tr>
+            <td style="padding:0 40px;">
+              <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(0,161,224,0.6),transparent);"></div>
+            </td>
+          </tr>
+
+          <!-- Sender details card -->
+          <tr>
+            <td style="padding:28px 40px 0;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;">
+
+                <tr>
+                  <td style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#64748b;text-transform:uppercase;">From</p>
+                    <p style="margin:0;font-size:16px;font-weight:600;color:#f1f5f9;">{!Case.ContactId}</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#64748b;text-transform:uppercase;">Email</p>
+                    <p style="margin:0;font-size:15px;color:#00A1E0;">{!Case.SuppliedEmail}</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#64748b;text-transform:uppercase;">Subject</p>
+                    <p style="margin:0;font-size:15px;color:#f1f5f9;">{!Case.Subject}</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#64748b;text-transform:uppercase;">Message</p>
+                    <p style="margin:0;font-size:15px;color:#cbd5e1;line-height:1.8;white-space:pre-wrap;">{!Case.Description}</p>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="padding:28px 40px 36px;text-align:center;">
+              <a href="{!Case.Link}" style="display:inline-block;background:linear-gradient(135deg,#00A1E0,#0077b6);color:#ffffff;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:50px;box-shadow:0 0 20px rgba(0,161,224,0.3);">
+                View Case in Salesforce →
+              </a>
+              <p style="margin:16px 0 0;font-size:13px;color:#475569;">
+                Case received on {!Case.CreatedDate}
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:rgba(0,0,0,0.3);padding:20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05);">
+              <p style="margin:0;font-size:12px;color:#475569;">
+                This notification was triggered by a portfolio contact form submission at
+                <a href="https://piyushdhaked.com" style="color:#00A1E0;text-decoration:none;">piyushdhaked.com</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
