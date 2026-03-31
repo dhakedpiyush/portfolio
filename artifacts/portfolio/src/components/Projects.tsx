@@ -15,6 +15,8 @@ const PROJECTS = [
     gradient: "from-[#00A1E0]/30 via-[#7B5EA7]/20 to-[#00A1E0]/10",
     accentColor: "#00A1E0",
     colSpan: "md:col-span-2",
+    cloudLogo: "/images/service-cloud.png",
+    cloudLogoAlt: "Service Cloud",
     bullets: [
       "Integrated AuthVia payments for managing payments on quotations and orders.",
       "Implemented Service Cloud end-to-end for customer support operations.",
@@ -33,6 +35,8 @@ const PROJECTS = [
     gradient: "from-sky-500/20 via-blue-400/15 to-transparent",
     accentColor: "#0EA5E9",
     colSpan: "md:col-span-1",
+    cloudLogo: "/images/sf-cloud.png",
+    cloudLogoAlt: "Salesforce",
     bullets: [
       "Enhanced Experience Sites with AI-driven search bars.",
       "Optimized Storefront functionality and test class coverage.",
@@ -51,6 +55,8 @@ const PROJECTS = [
     gradient: "from-emerald-500/20 via-teal-400/10 to-transparent",
     accentColor: "#10B981",
     colSpan: "md:col-span-1",
+    cloudLogo: "/images/service-cloud.png",
+    cloudLogoAlt: "Service Cloud",
     bullets: [
       "Banking Service Console with Email-to-Case & Web-to-Case.",
       "Apex Triggers, Classes, Flows, and Approval Processes.",
@@ -69,6 +75,8 @@ const PROJECTS = [
     gradient: "from-indigo-500/20 via-blue-400/10 to-transparent",
     accentColor: "#6366F1",
     colSpan: "md:col-span-1",
+    cloudLogo: "/images/manufacturing-cloud.png",
+    cloudLogoAlt: "Manufacturing Cloud",
     bullets: [
       "Optimized existing functionality within tight deadlines.",
       "Improved test class coverage for production readiness.",
@@ -87,6 +95,9 @@ const PROJECTS = [
     gradient: "from-violet-500/20 via-purple-400/10 to-transparent",
     accentColor: "#8B5CF6",
     colSpan: "md:col-span-1",
+    cloudLogo: "/images/education-cloud.png",
+    cloudLogoAlt: "Education Cloud",
+    cloudLogoRounded: true,
     bullets: [
       "Application Form Module with OmniStudio & LWC.",
       "Apex Triggers & LWCs for Deferral Form and Fees Payment.",
@@ -105,6 +116,8 @@ const PROJECTS = [
     gradient: "from-amber-500/20 via-orange-400/10 to-transparent",
     accentColor: "#F59E0B",
     colSpan: "md:col-span-2",
+    cloudLogo: "/images/manufacturing-cloud.png",
+    cloudLogoAlt: "Manufacturing Cloud",
     bullets: [
       "Migrated standard Quote to CPQ — formula fields, flows, templates.",
       "Configured products and ensured smooth CPQ environment functionality.",
@@ -122,12 +135,15 @@ const PROJECTS = [
     gradient: "from-cyan-500/20 via-teal-400/10 to-transparent",
     accentColor: "#06B6D4",
     colSpan: "md:col-span-1",
+    cloudLogo: "/images/service-cloud.png",
+    cloudLogoAlt: "Service Cloud",
     bullets: [
-      "New requirements delivered within tight deadlines.",
-      "Copado-Installed package for deployment pipelines.",
-      "Client communication and bi-weekly feature demos.",
+      "Optimized existing functionality, delivered new requirements within tight deadlines, and improved test class coverage for production.",
+      "Facilitated client communication for requirement gathering, conducted bi-weekly feature demonstrations and ensured smooth production deployments.",
+      "Implemented Service Cloud features including case management and support workflows to streamline customer service operations.",
+      "Worked on Copado-installed package for deployments.",
     ],
-    tech: ["Apex", "Copado", "Flows", "Deployment"],
+    tech: ["Service Cloud", "Apex", "Copado", "Flows", "Deployment"],
   },
 ];
 
@@ -183,6 +199,28 @@ export function Projects() {
                   className="absolute top-0 left-0 right-0 h-0.5 rounded-t-3xl"
                   style={{ background: `linear-gradient(90deg, ${project.accentColor}, transparent)` }}
                 />
+
+                {/* Tilted cloud logo — right side, perspective tilt */}
+                <div
+                  className="absolute bottom-5 right-3 pointer-events-none select-none"
+                  style={{
+                    perspective: "260px",
+                    perspectiveOrigin: "center center",
+                  }}
+                >
+                  <img
+                    src={project.cloudLogo}
+                    alt={project.cloudLogoAlt}
+                    className={`w-20 h-20 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-105 ${
+                      (project as any).cloudLogoRounded ? "rounded-xl" : ""
+                    }`}
+                    style={{
+                      transform: "rotateY(-22deg) rotateZ(2deg)",
+                      opacity: 0.55,
+                      filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.35))",
+                    }}
+                  />
+                </div>
 
                 {/* Current project pulsing ring */}
                 {project.current && (
