@@ -200,10 +200,10 @@ export function Projects() {
                   style={{ background: `linear-gradient(90deg, ${project.accentColor}, transparent)` }}
                 />
 
-                {/* Cloud logo — right aligned, 3D rotated (X:67 Y:32 Z:47) */}
+                {/* Cloud logo — right aligned, rotateY only: left edge back, face toward viewer */}
                 <div
                   className="absolute top-0 right-0 bottom-0 flex items-center justify-end pointer-events-none select-none"
-                  style={{ perspective: "600px", perspectiveOrigin: "right center" }}
+                  style={{ perspective: "500px", perspectiveOrigin: "right center" }}
                 >
                   <img
                     src={project.cloudLogo}
@@ -212,10 +212,10 @@ export function Projects() {
                       (project as any).cloudLogoRounded ? "rounded-2xl" : ""
                     }`}
                     style={{
-                      width: "300px",
-                      height: "300px",
-                      transform: "rotateX(67deg) rotateY(32deg) rotateZ(47deg)",
-                      transformOrigin: "center center",
+                      width: "320px",
+                      height: "320px",
+                      transform: "rotateY(-22deg)",
+                      transformOrigin: "right center",
                       opacity: 0.3,
                       filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.5))",
                     }}
