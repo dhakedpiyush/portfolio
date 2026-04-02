@@ -4,7 +4,8 @@ import { useTheme } from "@/hooks/use-theme";
 import { Moon, Sun, Menu, X, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const RESUME_URL = "https://drive.google.com/file/d/1PMkIDKkKxWJ36AIUhfl_LLtZOemOPMSR/view?usp=sharing";
+const RESUME_URL =
+  "https://drive.google.com/file/d/1I8H3fRnsYoxrhxeJnS0hVBYdee_wejaz/view?usp=sharing";
 
 const LINKS = [
   { name: "Home", href: "#home" },
@@ -24,7 +25,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      const sections = [...LINKS].map(l => l.name.toLowerCase());
+      const sections = [...LINKS].map((l) => l.name.toLowerCase());
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
         if (el && window.scrollY >= el.offsetTop - 200) {
@@ -71,8 +72,20 @@ export function Navbar() {
           <motion.div
             animate={
               isScrolled
-                ? { borderRadius: 0, paddingLeft: 0, paddingRight: 0, paddingTop: 0, paddingBottom: 0 }
-                : { borderRadius: 9999, paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12 }
+                ? {
+                    borderRadius: 0,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    paddingTop: 0,
+                    paddingBottom: 0,
+                  }
+                : {
+                    borderRadius: 9999,
+                    paddingLeft: 24,
+                    paddingRight: 24,
+                    paddingTop: 12,
+                    paddingBottom: 12,
+                  }
             }
             transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className="flex items-center justify-between relative"
@@ -93,11 +106,15 @@ export function Navbar() {
                 : isDark
                   ? "0 4px 32px rgba(0,0,0,0.3)"
                   : "0 4px 24px rgba(0,0,0,0.06)",
-              transition: "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
+              transition:
+                "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
             }}
           >
             {/* Logo */}
-            <a href="#home" className="text-xl font-display font-bold text-foreground flex items-center gap-2">
+            <a
+              href="#home"
+              className="text-xl font-display font-bold text-foreground flex items-center gap-2"
+            >
               <span className="text-primary">&lt;</span>
               Piyush
               <span className="text-accent">/&gt;</span>
@@ -113,7 +130,7 @@ export function Navbar() {
                     "text-sm font-medium transition-colors relative group py-2",
                     activeSection === link.name.toLowerCase()
                       ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {link.name}
@@ -121,7 +138,11 @@ export function Navbar() {
                     <motion.div
                       layoutId="active-nav"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </a>
@@ -136,7 +157,10 @@ export function Navbar() {
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 group"
               >
-                <FileText size={15} className="group-hover:scale-110 transition-transform" />
+                <FileText
+                  size={15}
+                  className="group-hover:scale-110 transition-transform"
+                />
                 View Resume
               </a>
 
@@ -184,7 +208,9 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    activeSection === link.name.toLowerCase() ? "text-primary text-glow" : "text-foreground"
+                    activeSection === link.name.toLowerCase()
+                      ? "text-primary text-glow"
+                      : "text-foreground",
                   )}
                 >
                   {link.name}

@@ -39,14 +39,14 @@ export function Footer() {
                 className="h-4 w-auto object-contain"
               />
             </span>
-            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+            {/* <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5">
               <img
                 src="/images/claude-logo.png"
                 alt="Claude"
                 className="w-5 h-5 object-contain"
               />
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
