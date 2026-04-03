@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { fadeUp, scaleUp, stagger, lineGrow, vp } from "@/lib/animations";
 import {
   Landmark, Cpu, GraduationCap, Wrench, Plane, Globe, ShieldCheck,
 } from "lucide-react";
@@ -157,43 +158,36 @@ const PROJECTS = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-  }),
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
+  show:   { opacity: 1, y: 0,  scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
 export function Projects() {
   return (
     <section id="projects" className="py-24 relative z-20">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-4">
-            <span className="w-12 h-1 bg-accent rounded-full"></span>
-            Featured Projects
-          </h2>
-          <p className="text-muted-foreground text-lg">
+        <motion.div initial="hidden" whileInView="show" viewport={vp} variants={stagger(0.1)} className="mb-16">
+          <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
+            <motion.span variants={lineGrow} className="block w-12 h-1 bg-accent rounded-full" />
+            <h2 className="text-3xl md:text-4xl font-display font-bold">Featured Projects</h2>
+          </motion.div>
+          <motion.p variants={fadeUp} className="text-muted-foreground text-lg">
             Enterprise Salesforce solutions delivered across 7+ global clients.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={vp}
+          variants={stagger(0.09)}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
+        >
           {PROJECTS.map((project, i) => {
             const Icon = project.icon;
             return (
               <motion.div
                 key={project.id}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
                 variants={cardVariants}
                 className={`group relative overflow-hidden rounded-3xl glass-card ${project.colSpan} flex flex-col`}
                 style={{ minHeight: project.colSpan === "md:col-span-2" ? 260 : 240 }}
@@ -287,7 +281,7 @@ export function Projects() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
