@@ -19,6 +19,19 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -89,11 +102,36 @@ export function Navbar() {
             {/* Logo */}
             <a
               href="#home"
-              className="text-xl font-display font-bold text-foreground flex items-center gap-2"
+              className="text-xl font-display font-bold text-foreground flex items-center gap-1 relative h-8 overflow-hidden"
             >
-              <span className="text-primary">&lt;</span>
-              Piyush
-              <span className="text-accent">/&gt;</span>
+              <AnimatePresence mode="wait" initial={false}>
+                {!isScrolled ? (
+                  <motion.span
+                    key="symbol"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex items-center"
+                  >
+                    <span className="text-primary">&lt;</span>
+                    <span className="text-foreground mx-0.5">/</span>
+                    <span className="text-accent">&gt;</span>
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="name"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex items-center"
+                  >
+                    <span className="text-foreground">Piyush Dhaked</span>
+                    <span className="text-primary">.</span>
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </a>
 
             {/* Desktop Nav */}
@@ -158,27 +196,41 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-xl flex flex-col justify-center items-center"
+            transition={{ duration: 0.2 }}
+            className="md:hidden flex flex-col justify-center items-center"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: "100vw",
+              height: "100dvh",
+              zIndex: 99999,
+              background: "hsl(222 47% 6%)",
+            }}
           >
             <button
-              className="absolute top-8 right-8 p-2 text-foreground"
+              className="absolute top-6 right-6 p-3 text-foreground hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
-              <X size={32} />
+              <X size={28} />
             </button>
-            <div className="flex flex-col items-center gap-8 text-2xl font-display font-semibold">
+            <nav className="flex flex-col items-center gap-6 text-2xl font-display font-semibold">
               {LINKS.map((link, i) => (
                 <motion.a
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08, duration: 0.3 }}
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
+                    "py-2 transition-colors",
                     activeSection === link.name.toLowerCase()
-                      ? "text-primary text-glow"
-                      : "text-foreground",
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-foreground",
                   )}
                 >
                   {link.name}
@@ -187,17 +239,17 @@ export function Navbar() {
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: LINKS.length * 0.1 }}
+                transition={{ delay: LINKS.length * 0.08, duration: 0.3 }}
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-6 py-3 rounded-full border border-primary text-primary text-lg mt-2"
+                className="flex items-center gap-2 px-6 py-3 rounded-full border border-primary text-primary text-lg mt-4 hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <FileText size={18} />
                 View Resume
               </motion.a>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
