@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 
-function isTouchDevice() {
-  return typeof window !== "undefined" && (
-    "ontouchstart" in window || navigator.maxTouchPoints > 0
-  );
+function isMouseDevice() {
+  return typeof window !== "undefined" &&
+    window.matchMedia("(pointer: fine)").matches;
 }
 
 export function Cursor() {
@@ -11,7 +10,7 @@ export function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isTouchDevice()) return;
+    if (!isMouseDevice()) return;
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -107,7 +106,7 @@ export function Cursor() {
     };
   }, []);
 
-  if (isTouchDevice()) return null;
+  if (!isMouseDevice()) return null;
 
   return (
     <>
