@@ -227,7 +227,7 @@ export function Contact() {
                   <img src="/images/sflogo.png" alt="Salesforce" className="w-6 h-6 object-contain" />
                 </div>
                 <span className="text-xs text-muted-foreground/50 text-center leading-relaxed">
-                  — 'cause Salesforce gives only 15 emails/day on Dev orgs 🥲
+                  - 'cause Salesforce gives only 15 emails/day on Dev orgs 🥲
                 </span>
               </div>
             </form>
