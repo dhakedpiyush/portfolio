@@ -42,7 +42,7 @@ export function Hero() {
   }, [done]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-aurora">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-aurora">
       <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-0"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: "2s" }}></div>
@@ -53,10 +53,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-extrabold mb-4"
+            className="font-extrabold mb-2 md:mb-4"
           >
-            <span className="block text-3xl md:text-4xl text-foreground/70 font-medium mb-1">Hi, I'm</span>
-            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl inline-flex items-center flex-wrap leading-tight">
+            <span className="block text-xl md:text-4xl text-foreground/70 font-medium mb-0.5">Hi, I'm</span>
+            <span className="text-gradient text-4xl md:text-6xl lg:text-7xl inline-flex items-center flex-wrap leading-tight">
               {displayed}
               <span
                 style={{
@@ -79,9 +79,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col gap-1 mb-6"
+            className="flex flex-col gap-0.5 mb-3 md:mb-6"
           >
-            <h2 className="text-2xl md:text-3xl font-display text-muted-foreground">
+            <h2 className="text-lg md:text-3xl font-display text-muted-foreground">
               Salesforce Developer{" "}
               <a
                 href="https://www.metadologie.com/"
@@ -92,24 +92,24 @@ export function Hero() {
                 @ Metadologie Inc
               </a>
             </h2>
-            <div className="flex items-center gap-3 mt-1">
+            <div className="flex items-center gap-2 mt-0.5 text-xs md:text-sm">
               <a
                 href="https://maps.app.goo.gl/xRoTsfy1VsHqmem68"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                className="inline-flex items-center gap-1.5 whitespace-nowrap text-muted-foreground hover:text-primary transition-colors group"
               >
-                <MapPin size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                <MapPin size={12} className="text-primary shrink-0 group-hover:scale-110 transition-transform" />
                 Jaipur, Rajasthan, India
               </a>
-              <span className="text-border">·</span>
+              <span className="text-border shrink-0">·</span>
               <a
                 href="https://www.metadologie.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 whitespace-nowrap text-muted-foreground hover:text-primary transition-colors"
               >
-                <ExternalLink size={12} />
+                <ExternalLink size={11} />
                 metadologie.com
               </a>
             </div>
@@ -119,7 +119,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-foreground/70 max-w-xl mb-10 leading-relaxed"
+            className="text-sm md:text-lg text-foreground/70 max-w-xl mb-5 md:mb-10 leading-relaxed"
           >
             5x Certified Salesforce Developer with 4 years of experience specializing in Apex, LWC, and Service Cloud. Based in Jaipur, building enterprise-scale solutions.
           </motion.p>
@@ -128,16 +128,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-4"
+            className="flex flex-wrap items-center gap-2 md:gap-4"
           >
-            <a href="#projects" className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold flex items-center gap-2 hover:bg-primary/90 hover:shadow-lg transition-all hover:-translate-y-0.5">
-              View My Work <ArrowDown size={18} />
+            <a href="#projects" className="px-5 py-2.5 md:px-8 md:py-4 rounded-full bg-primary text-primary-foreground text-sm md:text-base font-semibold flex items-center gap-2 hover:bg-primary/90 hover:shadow-lg transition-all hover:-translate-y-0.5">
+              View My Work <ArrowDown size={16} />
             </a>
-            <a href="https://linkedin.com/in/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
-              LinkedIn <ExternalLink size={18} />
+            <a href="https://linkedin.com/in/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 md:px-8 md:py-4 rounded-full glass text-sm md:text-base font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
+              LinkedIn <ExternalLink size={15} />
             </a>
-            <a href="https://www.salesforce.com/trailblazer/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
-              Trailhead <Mountain size={18} />
+            <a href="https://www.salesforce.com/trailblazer/piyushdhaked" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 md:px-8 md:py-4 rounded-full glass text-sm md:text-base font-semibold flex items-center gap-2 hover:bg-white/10 transition-all hover:-translate-y-0.5 text-foreground">
+              Trailhead <Mountain size={15} />
             </a>
           </motion.div>
         </div>
