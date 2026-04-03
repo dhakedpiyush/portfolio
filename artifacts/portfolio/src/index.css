@@ -111,14 +111,28 @@
   
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    @apply font-sans antialiased bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
-  *, *::before, *::after {
-    cursor: none !important;
+  /* Hide default cursor only on pointer/mouse devices */
+  @media (hover: hover) and (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
+  /* Restore default cursor on touch devices */
+  @media (hover: none), (pointer: coarse) {
+    *, *::before, *::after {
+      cursor: auto !important;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -1,10 +1,17 @@
 import { useEffect, useRef } from "react";
 
+function isTouchDevice() {
+  return typeof window !== "undefined" && (
+    "ontouchstart" in window || navigator.maxTouchPoints > 0
+  );
+}
+
 export function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isTouchDevice()) return;
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -99,6 +106,8 @@ export function Cursor() {
       window.removeEventListener("mouseover", onOver);
     };
   }, []);
+
+  if (isTouchDevice()) return null;
 
   return (
     <>

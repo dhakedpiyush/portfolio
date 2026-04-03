@@ -56,7 +56,7 @@ export function Hero() {
             className="font-extrabold mb-4"
           >
             <span className="block text-3xl md:text-4xl text-foreground/70 font-medium mb-1">Hi, I'm</span>
-            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl whitespace-nowrap inline-flex items-center">
+            <span className="text-gradient text-5xl md:text-6xl lg:text-7xl inline-flex items-center flex-wrap leading-tight">
               {displayed}
               <span
                 style={{
@@ -164,7 +164,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground animate-bounce"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground animate-bounce hidden md:flex"
       >
         <span className="text-xs tracking-widest uppercase mb-2">Scroll</span>
         <ArrowDown size={16} />
