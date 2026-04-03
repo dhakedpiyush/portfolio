@@ -10,6 +10,14 @@ export function Hero() {
   const [displayed, setDisplayed] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [done, setDone] = useState(false);
+  const [heroMinH, setHeroMinH] = useState<string>("100svh");
+
+  useEffect(() => {
+    // Capture the real viewport height at load time (with browser chrome visible).
+    // Using a px value prevents iOS Safari from re-stretching the section when
+    // the address bar collapses and the viewport height changes.
+    setHeroMinH(`${window.innerHeight}px`);
+  }, []);
 
   useEffect(() => {
     let index = 0;
@@ -42,7 +50,11 @@ export function Hero() {
   }, [done]);
 
   return (
-    <section id="home" className="relative min-h-[100svh] flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-aurora">
+    <section
+      id="home"
+      style={{ minHeight: heroMinH }}
+      className="relative flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-aurora"
+    >
       <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-0"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: "2s" }}></div>

@@ -41,6 +41,7 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50"
+      style={{ willChange: "transform", transform: "translateZ(0)" }}
     >
       {/* Full-width border-bottom layer — fades in when scrolled */}
       <div
@@ -53,13 +54,7 @@ export function Navbar() {
         }}
       />
 
-      <div
-        style={{
-          paddingTop: isScrolled ? "10px" : "20px",
-          paddingBottom: isScrolled ? "10px" : "20px",
-          transition: "padding 0.4s ease",
-        }}
-      >
+      <div style={{ paddingTop: "12px", paddingBottom: "12px" }}>
         <div className="max-w-7xl mx-auto px-6">
           {/* Single pill/bar that morphs via Framer Motion */}
           <motion.div
