@@ -19,8 +19,8 @@ export function Cursor() {
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const tick = () => {
-      ringX = lerp(ringX, mouseX, 0.18);
-      ringY = lerp(ringY, mouseY, 0.18);
+      ringX = lerp(ringX, mouseX, 0.35);
+      ringY = lerp(ringY, mouseY, 0.35);
 
       dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
       ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;

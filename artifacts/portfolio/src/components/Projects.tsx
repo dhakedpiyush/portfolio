@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, type Variants } from "framer-motion";
 import {
   Landmark, Cpu, GraduationCap, Wrench, Plane, Globe, ShieldCheck,
 } from "lucide-react";
@@ -156,12 +157,47 @@ const PROJECTS = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
+function TiltCard({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = ref.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const rotateX = ((y - cy) / cy) * -7;
+    const rotateY = ((x - cx) / cx) * 7;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    const card = ref.current;
+    if (!card) return;
+    card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{ ...style, willChange: "transform", transition: "transform 0.15s ease-out" }}
+    >
+      {children}
+    </div>
+  );
+}
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+    transition: { delay: i * 0.1, duration: 0.55, ease: "easeOut" },
   }),
 };
 
@@ -184,7 +220,7 @@ export function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" style={{ perspective: 1200 }}>
           {PROJECTS.map((project, i) => {
             const Icon = project.icon;
             return (
@@ -193,9 +229,13 @@ export function Projects() {
                 custom={i}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-60px" }}
                 variants={cardVariants}
-                className={`group relative overflow-hidden rounded-3xl glass-card ${project.colSpan} flex flex-col`}
+                className={`${project.colSpan}`}
+                style={{ minHeight: project.colSpan === "md:col-span-2" ? 260 : 240 }}
+              >
+              <TiltCard
+                className={`group relative overflow-hidden rounded-3xl glass-card h-full flex flex-col`}
                 style={{ minHeight: project.colSpan === "md:col-span-2" ? 260 : 240 }}
               >
                 {/* Gradient background layer */}
@@ -284,6 +324,7 @@ export function Projects() {
                     ))}
                   </div>
                 </div>
+              </TiltCard>
               </motion.div>
             );
           })}

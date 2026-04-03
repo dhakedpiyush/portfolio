@@ -67,13 +67,14 @@ export function Experience() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6 }}
+                  initial={{ opacity: 0, x: isEven ? -70 : 70, rotateX: 6 }}
+                  whileInView={{ opacity: 1, x: 0, rotateX: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className={`relative flex flex-col md:flex-row gap-8 ${
                     isEven ? "md:flex-row-reverse" : ""
                   }`}
+                  style={{ perspective: 1000 }}
                 >
                   {/* Timeline Dot */}
                   <div className="absolute left-[20px] md:left-1/2 top-6 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(0,161,224,0.8)] -translate-x-[7px] md:-translate-x-1/2 z-10 flex items-center justify-center">
@@ -85,9 +86,12 @@ export function Experience() {
 
                   {/* Content Card */}
                   <div className="pl-12 md:pl-0 md:w-1/2 w-full">
-                    <div className={`glass-card p-6 md:p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 ${
-                      isEven ? "md:mr-12" : "md:ml-12"
-                    }`}>
+                    <motion.div
+                      whileHover={{ y: -6, scale: 1.01 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className={`glass-card p-6 md:p-8 rounded-2xl ${isEven ? "md:mr-12" : "md:ml-12"}`}
+                      style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.35)" }}
+                    >
                       <div className="flex items-center gap-3 mb-2 text-primary font-semibold">
                         <Briefcase size={18} />
                         <span>{exp.period}</span>
@@ -99,13 +103,20 @@ export function Experience() {
                       <p className="text-foreground/80 mb-4">{exp.description}</p>
                       <ul className="space-y-2">
                         {exp.highlights.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -12 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.15 + i * 0.07, duration: 0.4 }}
+                            className="flex items-start gap-2 text-sm text-foreground/70"
+                          >
                             <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
                             {item}
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
-                    </div>
+                    </motion.div>
                   </div>
                 </motion.div>
               );

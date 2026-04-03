@@ -1,4 +1,5 @@
 import { Cursor } from "@/components/Cursor";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import { Background } from "@/components/Background";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
@@ -16,6 +17,7 @@ export default function Home() {
     <div className="relative bg-background min-h-screen text-foreground selection:bg-primary/30">
       <Background />
       <Cursor />
+      <ScrollProgress />
       <Navbar />
       
       <main>
