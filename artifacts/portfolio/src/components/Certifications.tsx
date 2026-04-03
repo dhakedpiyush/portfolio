@@ -10,7 +10,7 @@ const CERTS = [
     image: "/images/cert-admin.png",
     color: "from-blue-600 to-cyan-400",
     borderColor: "rgba(0,161,224,0.7)",
-    glow: "rgba(0,161,224,0.25)",
+    glow: "rgba(0,161,224,0.3)",
     tag: "Administration",
   },
   {
@@ -20,7 +20,7 @@ const CERTS = [
     image: "/images/cert-developer.png",
     color: "from-indigo-600 to-blue-400",
     borderColor: "rgba(99,102,241,0.7)",
-    glow: "rgba(99,102,241,0.25)",
+    glow: "rgba(99,102,241,0.3)",
     tag: "Development",
   },
   {
@@ -30,7 +30,7 @@ const CERTS = [
     image: "/images/cert-agentforce.png",
     color: "from-purple-600 to-indigo-400",
     borderColor: "rgba(139,92,246,0.7)",
-    glow: "rgba(139,92,246,0.25)",
+    glow: "rgba(139,92,246,0.3)",
     tag: "AI & Agents",
   },
   {
@@ -40,7 +40,7 @@ const CERTS = [
     image: "/images/cert-ai-associate.png",
     color: "from-cyan-500 to-sky-400",
     borderColor: "rgba(6,182,212,0.7)",
-    glow: "rgba(6,182,212,0.25)",
+    glow: "rgba(6,182,212,0.3)",
     tag: "Artificial Intelligence",
   },
   {
@@ -50,7 +50,7 @@ const CERTS = [
     image: "/images/cert-foundations.png",
     color: "from-sky-500 to-blue-400",
     borderColor: "rgba(14,165,233,0.7)",
-    glow: "rgba(14,165,233,0.25)",
+    glow: "rgba(14,165,233,0.3)",
     tag: "Foundations",
   },
 ];
@@ -71,9 +71,7 @@ export function Certifications() {
       const elapsed = Date.now() - start;
       const pct = Math.min((elapsed / INTERVAL_MS) * 100, 100);
       setProgress(pct);
-      if (pct >= 100) {
-        next();
-      }
+      if (pct >= 100) next();
     }, 30);
     return () => clearInterval(tick);
   }, [active, next]);
@@ -88,10 +86,7 @@ export function Certifications() {
   const cert = CERTS[active];
 
   return (
-    <section
-      id="certifications"
-      className="py-24 relative z-20 section-alt"
-    >
+    <section id="certifications" className="py-24 relative z-20 section-alt">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -99,42 +94,46 @@ export function Certifications() {
           viewport={{ once: true }}
           className="mb-14 flex flex-col items-center text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20"
+          >
             <ShieldCheck size={16} /> 5x Certified
-          </div>
+          </motion.div>
           <h2 className="text-3xl md:text-4xl font-display font-bold">Salesforce Credentials</h2>
           <p className="text-muted-foreground mt-3 max-w-lg text-sm">
             Verified credentials across administration, development, AI, and emerging Salesforce technologies.
           </p>
         </motion.div>
 
-        {/* Carousel stage */}
-        <div className="relative flex items-center justify-center" style={{ height: 300 }}>
-          {/* Left arrow */}
+        {/* 3D Carousel stage */}
+        <div className="relative flex items-center justify-center" style={{ height: 340, perspective: 1200 }}>
           <button
             onClick={prev}
-            className="absolute left-0 z-30 p-2 rounded-full bg-background/80 border border-white/10 text-muted-foreground hover:text-white hover:border-white/30 transition-all shadow-lg"
+            className="absolute left-0 z-30 p-2.5 rounded-full bg-background/80 border border-white/10 text-muted-foreground hover:text-white hover:border-white/30 hover:shadow-[0_0_16px_rgba(0,161,224,0.2)] transition-all shadow-lg"
           >
             <ChevronLeft size={20} />
           </button>
 
-          {/* Cards */}
           {CERTS.map((c, i) => {
             const offset = getOffset(i);
             const abs = Math.abs(offset);
             const isActive = abs === 0;
 
-            const xPx = offset * 220;
-            const scale = isActive ? 1 : abs === 1 ? 0.74 : 0.56;
-            const opacity = isActive ? 1 : abs === 1 ? 0.38 : 0.12;
+            const xPx = offset * 230;
+            const scale = isActive ? 1 : abs === 1 ? 0.72 : 0.52;
+            const opacity = isActive ? 1 : abs === 1 ? 0.35 : 0.1;
             const zIndex = 20 - abs;
+            const rotateY = offset * -14;
 
             return (
               <motion.div
                 key={c.id}
-                animate={{ x: xPx, scale, opacity }}
+                animate={{ x: xPx, scale, opacity, rotateY }}
                 transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
-                style={{ position: "absolute", zIndex, originX: "50%" }}
+                style={{ position: "absolute", zIndex, originX: "50%", transformStyle: "preserve-3d" }}
                 onClick={() => !isActive && setActive(i)}
                 className={!isActive ? "cursor-pointer" : ""}
               >
@@ -143,32 +142,49 @@ export function Certifications() {
                   style={{
                     background: isActive
                       ? `linear-gradient(135deg, ${c.borderColor}, transparent 60%)`
-                      : "rgba(255,255,255,0.08)",
-                    width: 190,
+                      : "rgba(255,255,255,0.06)",
+                    width: 196,
                   }}
                 >
-                  {/* Glow behind active card */}
+                  {/* Pulsing glow behind active */}
                   {isActive && (
-                    <div
-                      className="absolute inset-0 rounded-2xl blur-2xl -z-10 scale-110"
-                      style={{ background: c.glow }}
-                    />
+                    <>
+                      <motion.div
+                        className="absolute inset-0 rounded-2xl -z-10"
+                        style={{ background: c.glow, filter: "blur(28px)", scale: 1.2 }}
+                        animate={{ opacity: [0.6, 1, 0.6] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 rounded-2xl -z-20"
+                        style={{ background: c.glow, filter: "blur(50px)", scale: 1.5 }}
+                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      />
+                    </>
                   )}
 
                   <div className="bg-background/90 backdrop-blur-xl rounded-2xl p-5 flex flex-col items-center gap-3 text-center">
-                    <img
+                    <motion.img
                       src={c.image}
                       alt={c.name}
                       className="object-contain drop-shadow-lg"
-                      style={{ width: isActive ? 120 : 90, height: isActive ? 120 : 90, transition: "all 0.4s" }}
+                      animate={{
+                        width: isActive ? 124 : 88,
+                        height: isActive ? 124 : 88,
+                        filter: isActive ? `drop-shadow(0 0 12px ${c.glow})` : "none",
+                      }}
+                      transition={{ duration: 0.4 }}
                       draggable={false}
                     />
                     {isActive && (
-                      <span
-                        className={`text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full bg-gradient-to-r ${c.color} text-white`}
+                      <motion.span
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className={`text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full bg-gradient-to-r ${c.color} text-white shadow-lg`}
                       >
                         {c.tag}
-                      </span>
+                      </motion.span>
                     )}
                   </div>
                 </div>
@@ -176,22 +192,21 @@ export function Certifications() {
             );
           })}
 
-          {/* Right arrow */}
           <button
             onClick={next}
-            className="absolute right-0 z-30 p-2 rounded-full bg-background/80 border border-white/10 text-muted-foreground hover:text-white hover:border-white/30 transition-all shadow-lg"
+            className="absolute right-0 z-30 p-2.5 rounded-full bg-background/80 border border-white/10 text-muted-foreground hover:text-white hover:border-white/30 hover:shadow-[0_0_16px_rgba(0,161,224,0.2)] transition-all shadow-lg"
           >
             <ChevronRight size={20} />
           </button>
         </div>
 
-        {/* Active cert details panel */}
+        {/* Active cert details */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -12, filter: "blur(4px)" }}
             transition={{ duration: 0.35 }}
             className="mt-8 flex flex-col items-center text-center gap-3"
           >
@@ -223,7 +238,7 @@ export function Certifications() {
                 style={{
                   width: i === active ? 28 : 8,
                   height: 8,
-                  background: i === active ? "transparent" : "rgba(255,255,255,0.2)",
+                  background: i === active ? "transparent" : "rgba(255,255,255,0.15)",
                 }}
               >
                 {i === active && (
@@ -244,15 +259,10 @@ export function Certifications() {
               </button>
             ))}
           </div>
-
           <p className="text-muted-foreground text-xs flex items-center gap-1.5">
             All credentials verified at
-            <a
-              href="https://sforce.co/verifycerts"
-              target="_blank"
-              rel="noreferrer"
-              className="text-primary hover:underline inline-flex items-center gap-0.5"
-            >
+            <a href="https://sforce.co/verifycerts" target="_blank" rel="noreferrer"
+              className="text-primary hover:underline inline-flex items-center gap-0.5">
               sforce.co/verifycerts <ExternalLink size={10} />
             </a>
           </p>

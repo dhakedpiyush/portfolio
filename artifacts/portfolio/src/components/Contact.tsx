@@ -163,7 +163,7 @@ export function Contact() {
                   maxLength={80}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="contact-input w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none transition-all"
                   placeholder="John Doe"
                 />
               </div>
@@ -180,7 +180,7 @@ export function Contact() {
                   maxLength={80}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="contact-input w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none transition-all"
                   placeholder="john@example.com"
                 />
               </div>
@@ -196,7 +196,7 @@ export function Contact() {
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                  className="contact-input w-full bg-background/60 border border-border/50 rounded-xl px-4 py-3 text-foreground focus:outline-none transition-all resize-none"
                   placeholder="Hello Piyush..."
                 />
               </div>
@@ -204,7 +204,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 hover:shadow-[0_4px_16px_rgba(0,161,224,0.25)] transition-all shadow-[0_2px_8px_rgba(0,0,0,0.15)] disabled:opacity-70 disabled:cursor-not-allowed group"
+                className="shimmer-btn w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 hover:shadow-[0_4px_24px_rgba(0,161,224,0.35)] transition-all shadow-[0_2px_8px_rgba(0,0,0,0.15)] disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
               >
                 {isSubmitting ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
