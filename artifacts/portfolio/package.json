@@ -76,10 +76,8 @@
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
-    "@types/three": "^0.183.1",
     "canvas-confetti": "^1.9.4",
     "react-countup": "^6.5.3",
-    "react-intersection-observer": "^10.0.3",
-    "three": "^0.183.2"
+    "react-intersection-observer": "^10.0.3"
   }
 }

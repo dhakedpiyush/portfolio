@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fadeUp, stagger, lineGrow, vp } from "@/lib/animations";
 import { Code2, Cloud, PlugZap, Package, PenTool, Braces } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -51,9 +50,14 @@ export function Skills() {
   return (
     <section id="skills" className="py-24 relative z-20">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div initial="hidden" whileInView="show" viewport={vp} variants={stagger(0.1)} className="mb-12 text-center">
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-display font-bold mb-4">Technical Expertise</motion.h2>
-          <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto">Comprehensive skill set across the Salesforce ecosystem and beyond.</motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Technical Expertise</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Comprehensive skill set across the Salesforce ecosystem and beyond.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-12 gap-8">

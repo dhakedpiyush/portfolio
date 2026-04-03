@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { slideLeft, slideRight, scaleUp, stagger, fadeUp, lineGrow, vp } from "@/lib/animations";
 import { Send, MapPin, Mail, Linkedin, Mountain } from "lucide-react";
 import confetti from "canvas-confetti";
 
@@ -74,17 +73,20 @@ export function Contact() {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
-          {/* Left — contact info with staggered entrance */}
-          <motion.div initial="hidden" whileInView="show" viewport={vp} variants={stagger(0.1)}>
-            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Let's build something <span className="text-gradient">extraordinary.</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-lg text-muted-foreground mb-12 max-w-md">
+            </h2>
+            <p className="text-lg text-muted-foreground mb-12 max-w-md">
               My team is growing. If anyone is looking for a new challenge, I'm available for referrals!
-            </motion.p>
+            </p>
 
             <div className="space-y-6">
-              <motion.a variants={scaleUp}
+              <a
                 href="mailto:dhakedpiyush9291@gmail.com"
                 className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors w-fit group"
               >
@@ -92,16 +94,16 @@ export function Contact() {
                   <Mail size={20} />
                 </div>
                 <span className="font-medium text-lg">dhakedpiyush9291@gmail.com</span>
-              </motion.a>
+              </a>
 
-              <motion.div variants={scaleUp} className="flex items-center gap-4 text-foreground/80">
+              <div className="flex items-center gap-4 text-foreground/80">
                 <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary">
                   <MapPin size={20} />
                 </div>
                 <span className="font-medium text-lg">Jaipur, Rajasthan, India</span>
-              </motion.div>
+              </div>
 
-              <motion.a variants={scaleUp}
+              <a
                 href="https://linkedin.com/in/piyushdhaked"
                 target="_blank"
                 rel="noreferrer"
@@ -111,9 +113,9 @@ export function Contact() {
                   <Linkedin size={20} />
                 </div>
                 <span className="font-medium text-lg">linkedin.com/in/piyushdhaked</span>
-              </motion.a>
+              </a>
 
-              <motion.a variants={scaleUp}
+              <a
                 href="https://www.salesforce.com/trailblazer/piyushdhaked"
                 target="_blank"
                 rel="noreferrer"
@@ -123,12 +125,15 @@ export function Contact() {
                   <Mountain size={20} />
                 </div>
                 <span className="font-medium text-lg">trailblazer/piyushdhaked</span>
-              </motion.a>
+              </a>
             </div>
           </motion.div>
 
-          {/* Right — form slides in */}
-          <motion.div initial="hidden" whileInView="show" viewport={vp} variants={slideRight}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <form
               ref={formRef}
               action={SF_ENDPOINT}
