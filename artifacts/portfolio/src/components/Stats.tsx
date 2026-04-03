@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 const stats = [
-  { value: 4, suffix: "", label: "Years Experience" },
+  { value: 4, suffix: "+", label: "Years Experience" },
   { value: 5, suffix: "x", label: "Salesforce Certified" },
   { value: 9, suffix: "+", label: "Projects Delivered" },
   { value: 5, suffix: "+", label: "Salesforce Clouds" },
