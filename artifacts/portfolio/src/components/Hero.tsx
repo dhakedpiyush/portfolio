@@ -42,7 +42,7 @@ export function Hero() {
   }, [done]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-aurora">
+    <section id="home" className="relative min-h-[100svh] flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-aurora">
       <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-0"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/8 rounded-full blur-[140px] animate-pulse z-0" style={{ animationDelay: "2s" }}></div>
