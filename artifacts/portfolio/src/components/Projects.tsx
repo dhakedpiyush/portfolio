@@ -3,6 +3,7 @@ import { motion, type Variants } from "framer-motion";
 import {
   Landmark, Cpu, GraduationCap, Wrench, Plane, Globe, ShieldCheck,
 } from "lucide-react";
+import { ProjectGlobe } from "@/components/ui/project-globe";
 
 const PROJECTS = [
   {
@@ -205,20 +206,31 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 relative z-20">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-4">
-            <span className="w-12 h-1 bg-accent rounded-full"></span>
-            Featured Projects
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Enterprise Salesforce solutions delivered across 7+ global clients.
-          </p>
-        </motion.div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-4">
+              <span className="w-12 h-1 bg-accent rounded-full"></span>
+              Featured Projects
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Enterprise Salesforce solutions delivered across 7+ global clients.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="hidden md:block"
+          >
+            <ProjectGlobe className="w-40 h-40 lg:w-48 lg:h-48" />
+          </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5" style={{ perspective: 1200 }}>
           {PROJECTS.map((project, i) => {
