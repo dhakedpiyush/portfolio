@@ -19,15 +19,12 @@ export function Background() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const PARTICLE_COUNT = 70;
-    const MAX_DIST = 140;
+    const PARTICLE_COUNT = 65;
+    const MAX_DIST = 130;
     const particles: Particle[] = [];
     let rafId: number;
     let width = 0;
     let height = 0;
-
-    const isDark = () =>
-      document.documentElement.classList.contains("dark");
 
     const resize = () => {
       width = canvas.width = window.innerWidth;
@@ -40,10 +37,10 @@ export function Background() {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          radius: Math.random() * 1.8 + 0.6,
-          opacity: Math.random() * 0.5 + 0.15,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28,
+          radius: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.4 + 0.1,
         });
       }
     };
@@ -51,9 +48,8 @@ export function Background() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const dark = isDark();
-      const dotColor = dark ? "0, 161, 224" : "0, 100, 180";
-      const lineColor = dark ? "0, 161, 224" : "0, 100, 180";
+      const dotColor = "38, 143, 204";
+      const lineColor = "38, 143, 204";
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -76,12 +72,12 @@ export function Background() {
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.15;
+            const alpha = (1 - dist / MAX_DIST) * 0.12;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
             ctx.strokeStyle = `rgba(${lineColor}, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
@@ -96,7 +92,6 @@ export function Background() {
 
     const ro = new ResizeObserver(resize);
     ro.observe(document.documentElement);
-
     window.addEventListener("resize", resize);
 
     return () => {
@@ -111,42 +106,60 @@ export function Background() {
       <canvas
         ref={canvasRef}
         className="fixed inset-0 w-full h-full pointer-events-none z-0"
-        style={{ opacity: 0.8 }}
+        style={{ opacity: 0.75 }}
       />
+
       {/* Floating gradient orbs */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Top-left: primary blue */}
         <div
           className="absolute rounded-full"
           style={{
-            width: 600,
-            height: 600,
-            top: "10%",
-            left: "-10%",
-            background: "radial-gradient(circle, rgba(0,161,224,0.07) 0%, transparent 70%)",
-            animation: "float-orb 18s ease-in-out infinite",
+            width: 700,
+            height: 700,
+            top: "5%",
+            left: "-12%",
+            background: "radial-gradient(circle, rgba(38,143,204,0.05) 0%, transparent 65%)",
+            animation: "float-orb 20s ease-in-out infinite",
           }}
         />
+        {/* Middle-right: purple accent */}
         <div
           className="absolute rounded-full"
           style={{
-            width: 500,
-            height: 500,
-            top: "50%",
-            right: "-8%",
-            background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)",
-            animation: "float-orb 22s ease-in-out infinite reverse",
+            width: 550,
+            height: 550,
+            top: "45%",
+            right: "-10%",
+            background: "radial-gradient(circle, rgba(112,96,186,0.04) 0%, transparent 65%)",
+            animation: "float-orb 25s ease-in-out infinite reverse",
+            animationDelay: "-4s",
           }}
         />
+        {/* Bottom-center: light cyan */}
         <div
           className="absolute rounded-full"
           style={{
-            width: 400,
-            height: 400,
-            bottom: "15%",
-            left: "30%",
-            background: "radial-gradient(circle, rgba(0,168,216,0.05) 0%, transparent 70%)",
-            animation: "float-orb 28s ease-in-out infinite",
-            animationDelay: "-6s",
+            width: 450,
+            height: 450,
+            bottom: "10%",
+            left: "28%",
+            background: "radial-gradient(circle, rgba(38,143,204,0.032) 0%, transparent 65%)",
+            animation: "float-orb 30s ease-in-out infinite",
+            animationDelay: "-9s",
+          }}
+        />
+        {/* Top-right: subtle warm blue */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 380,
+            height: 380,
+            top: "15%",
+            right: "15%",
+            background: "radial-gradient(circle, rgba(38,143,204,0.022) 0%, transparent 65%)",
+            animation: "float-orb 18s ease-in-out infinite reverse",
+            animationDelay: "-12s",
           }}
         />
       </div>

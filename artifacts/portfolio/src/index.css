@@ -46,62 +46,62 @@
 }
 
 :root {
-  /* DARK MODE ONLY — Deep futuristic navy */
-  --background: 222 47% 7%;
-  --foreground: 210 40% 98%;
+  /* Professional dark — near-black base, steel blue primary */
+  --background: 220 15% 6%;
+  --foreground: 214 32% 95%;
 
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 215 32% 20%;
+  --card: 220 15% 10%;
+  --card-foreground: 214 32% 95%;
+  --card-border: 220 12% 18%;
 
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 215 32% 20%;
+  --popover: 220 15% 10%;
+  --popover-foreground: 214 32% 95%;
+  --popover-border: 220 12% 18%;
 
-  --primary: 197 100% 44%; /* Salesforce Blue */
-  --primary-foreground: 210 40% 98%;
+  --primary: 207 72% 50%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 220 14% 15%;
+  --secondary-foreground: 214 32% 95%;
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 220 14% 14%;
+  --muted-foreground: 218 12% 55%;
 
-  --accent: 258 55% 62%; /* Muted Purple */
-  --accent-foreground: 210 40% 98%;
+  --accent: 252 38% 58%;
+  --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 60% 35%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 197 100% 44%;
+  --border: 220 12% 17%;
+  --input: 220 12% 17%;
+  --ring: 207 72% 50%;
 
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: 222 47% 7%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 215 32% 20%;
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 215 32% 20%;
-  --primary: 197 100% 44%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 258 55% 62%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 197 100% 44%;
+  --background: 220 15% 6%;
+  --foreground: 214 32% 95%;
+  --card: 220 15% 10%;
+  --card-foreground: 214 32% 95%;
+  --card-border: 220 12% 18%;
+  --popover: 220 15% 10%;
+  --popover-foreground: 214 32% 95%;
+  --popover-border: 220 12% 18%;
+  --primary: 207 72% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 15%;
+  --secondary-foreground: 214 32% 95%;
+  --muted: 220 14% 14%;
+  --muted-foreground: 218 12% 55%;
+  --accent: 252 38% 58%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 60% 35%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 12% 17%;
+  --input: 220 12% 17%;
+  --ring: 207 72% 50%;
 }
 
 @layer base {
@@ -164,15 +164,15 @@
   }
 
   .tilt-card:hover {
-    box-shadow: 0 20px 60px rgba(0,161,224,0.15), 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(38,143,204,0.12), 0 4px 20px rgba(0,0,0,0.4);
   }
-  
+
   .text-glow {
-    text-shadow: 0 0 12px hsl(var(--primary) / 0.25);
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.22);
   }
-  
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#00A8D8];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#4AABDF];
   }
 }
 
@@ -219,9 +219,9 @@
 .dark .bg-aurora {
   background: linear-gradient(120deg,
     hsl(var(--background)),
-    hsl(222 47% 12%),
-    hsl(var(--primary)/0.1),
-    hsl(var(--accent)/0.08));
+    hsl(220 15% 9%),
+    hsl(var(--primary)/0.07),
+    hsl(var(--accent)/0.05));
   background-size: 200% 200%;
   animation: aurora 15s ease infinite;
 }
@@ -239,4 +239,49 @@
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+/* Smooth section transitions */
+section {
+  will-change: opacity, transform;
+}
+
+/* Refined glass card hover */
+.glass-card {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Input focus ring consistency */
+input:focus, textarea:focus {
+  outline: none;
+}
+
+/* Section transition gradient */
+@keyframes section-fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle scanline overlay for depth */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Stat number shine */
+@keyframes number-shine {
+  0%   { opacity: 0.7; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Marquee — infinite conveyor belt */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+@keyframes marquee-rtl {
+  0%   { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
 }

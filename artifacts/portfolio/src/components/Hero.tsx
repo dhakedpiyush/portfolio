@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink, Globe, MapPin, Mountain } from "lucide-react";
 
 const FULL_NAME = "Piyush Dhaked";
-const TYPE_SPEED = 90;
-const START_DELAY = 600;
+const TYPE_SPEED = 45;
+const START_DELAY = 400;
 
 export function Hero() {
   const [displayed, setDisplayed] = useState("");
@@ -13,16 +13,12 @@ export function Hero() {
   const [heroMinH, setHeroMinH] = useState<string>("100svh");
 
   useEffect(() => {
-    // Capture the real viewport height at load time (with browser chrome visible).
-    // Using a px value prevents iOS Safari from re-stretching the section when
-    // the address bar collapses and the viewport height changes.
     setHeroMinH(`${window.innerHeight}px`);
   }, []);
 
   useEffect(() => {
     let index = 0;
     let typingTimer: ReturnType<typeof setTimeout>;
-
     const startTimer = setTimeout(() => {
       const type = () => {
         index++;
@@ -36,11 +32,7 @@ export function Hero() {
       };
       type();
     }, START_DELAY);
-
-    return () => {
-      clearTimeout(startTimer);
-      clearTimeout(typingTimer);
-    };
+    return () => { clearTimeout(startTimer); clearTimeout(typingTimer); };
   }, []);
 
   useEffect(() => {
@@ -86,17 +78,17 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mb-4 md:mb-5"
           >
-            <span className="block text-base md:text-4xl text-foreground/70 font-medium mb-1">Hi, I'm</span>
-            <h1 className="text-gradient text-4xl md:text-6xl lg:text-7xl font-extrabold inline-flex items-center flex-wrap leading-tight">
+            <span className="block text-base md:text-xl text-foreground/50 font-medium mb-1 tracking-widest uppercase font-mono">Hi, I'm</span>
+            <h1 className="text-gradient text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight inline-flex items-end">
               {displayed}
               <span
                 style={{
                   display: "inline-block",
-                  width: "3px",
-                  height: "0.85em",
-                  marginLeft: "4px",
+                  width: "0.6em",
+                  height: "3px",
+                  marginLeft: "3px",
+                  marginBottom: "0.12em",
                   borderRadius: "2px",
-                  verticalAlign: "middle",
                   background: "hsl(var(--primary))",
                   opacity: cursorVisible ? 1 : 0,
                   transition: done ? "opacity 0.4s ease" : "none",

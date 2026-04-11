@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SplitText } from "@/components/ui/split-text";
 import {
   Code2,
   Cloud,
@@ -175,11 +176,10 @@ export function Skills() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-4">
-            <span className="w-12 h-1 bg-primary rounded-full"></span>
-            Technical Expertise
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+            <SplitText text="Technical Expertise" mode="chars" delay={0.05} stagger={0.035} />
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base">
             Comprehensive skill set across the Salesforce ecosystem and beyond.
           </p>
         </motion.div>

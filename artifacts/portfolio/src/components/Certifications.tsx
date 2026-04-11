@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, ExternalLink } from "lucide-react";
+import { SplitText } from "@/components/ui/split-text";
 import { FocusRail, type FocusRailItem } from "@/components/ui/focus-rail";
 
 const CERTS: FocusRailItem[] = [
@@ -58,7 +59,9 @@ export function Certifications() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <ShieldCheck size={16} /> 5x Certified
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold">Salesforce Credentials</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold">
+            <SplitText text="Salesforce Credentials" mode="chars" delay={0.05} stagger={0.03} />
+          </h2>
           <p className="text-muted-foreground mt-3 max-w-lg text-sm">
             Verified credentials across administration, development, AI, and emerging Salesforce technologies.
           </p>

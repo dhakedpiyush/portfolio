@@ -4,6 +4,7 @@ import { Background } from "@/components/Background";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
+import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
@@ -19,10 +20,11 @@ export default function Home() {
       <Cursor />
       <ScrollProgress />
       <Navbar />
-      
+
       <main>
         <Hero />
         <Stats />
+        <Marquee />
         <About />
         <Experience />
         <Skills />
