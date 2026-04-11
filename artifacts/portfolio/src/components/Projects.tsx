@@ -179,28 +179,45 @@ function TiltCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const shimmerRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const latestRef = useRef<{ x: number; y: number; rect: DOMRect | null }>({
+    x: 0,
+    y: 0,
+    rect: null,
+  });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Coalesce mousemove to one frame — avoids 100+ transform writes/sec.
     const card = ref.current;
     if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotateX = ((y - cy) / cy) * -6;
-    const rotateY = ((x - cx) / cx) * 6;
-    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.018,1.018,1.018)`;
-
-    // Move shimmer
-    if (shimmerRef.current) {
-      const xPct = (x / rect.width) * 100;
-      const yPct = (y / rect.height) * 100;
-      shimmerRef.current.style.background = `radial-gradient(circle at ${xPct}% ${yPct}%, rgba(${accentRgb},0.08) 0%, transparent 60%)`;
-    }
+    latestRef.current.rect = card.getBoundingClientRect();
+    latestRef.current.x = e.clientX;
+    latestRef.current.y = e.clientY;
+    if (rafRef.current !== null) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const { rect, x, y } = latestRef.current;
+      if (!rect) return;
+      const lx = x - rect.left;
+      const ly = y - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rotateX = ((ly - cy) / cy) * -6;
+      const rotateY = ((lx - cx) / cx) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.018,1.018,1.018)`;
+      if (shimmerRef.current) {
+        const xPct = (lx / rect.width) * 100;
+        const yPct = (ly / rect.height) * 100;
+        shimmerRef.current.style.background = `radial-gradient(circle at ${xPct}% ${yPct}%, rgba(${accentRgb},0.08) 0%, transparent 60%)`;
+      }
+    });
   };
 
   const handleMouseLeave = () => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     const card = ref.current;
     if (!card) return;
     card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
@@ -220,7 +237,7 @@ function TiltCard({
       {/* Mouse-follow shimmer */}
       <div
         ref={shimmerRef}
-        className="absolute inset-0 rounded-3xl pointer-events-none z-20 transition-all duration-150"
+        className="absolute inset-0 rounded-3xl pointer-events-none z-20"
       />
       {children}
     </div>

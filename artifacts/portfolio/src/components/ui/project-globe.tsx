@@ -78,20 +78,31 @@ export function ProjectGlobe({
     let globe: ReturnType<typeof createGlobe> | null = null
     let animationId: number
     let phi = 0
+    let inView = true
+    let intersectionObserver: IntersectionObserver | null = null
 
     function init() {
       const width = canvas.offsetWidth
       if (width === 0 || globe) return
 
+      // Detect low-end devices for cheaper globe settings.
+      const isLowEnd =
+        window.matchMedia("(pointer: coarse)").matches ||
+        (navigator as any).hardwareConcurrency <= 4 ||
+        window.innerWidth < 768
+      const dpr = Math.min(window.devicePixelRatio || 1, isLowEnd ? 1.5 : 2)
+      const mapSamples = isLowEnd ? 8000 : 16000
+      const renderScale = isLowEnd ? 1.5 : 2
+
       globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-        width: width * 2,
-        height: width * 2,
+        devicePixelRatio: dpr,
+        width: width * renderScale,
+        height: width * renderScale,
         phi: 0,
         theta: 0.2,
         dark: 0,
         diffuse: 1.5,
-        mapSamples: 16000,
+        mapSamples,
         mapBrightness: 8,
         baseColor: [1, 1, 1],
         markerColor: [0.85, 0.35, 0.6],
@@ -100,7 +111,7 @@ export function ProjectGlobe({
       })
 
       function animate() {
-        if (!isPausedRef.current) phi += speed
+        if (inView && !isPausedRef.current) phi += speed
         globe!.update({
           phi: phi + phiOffsetRef.current + dragOffset.current.phi,
           theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
@@ -109,6 +120,13 @@ export function ProjectGlobe({
       }
       animate()
       setTimeout(() => canvas && (canvas.style.opacity = "1"))
+
+      // Skip advancing phi when the globe is scrolled out of view.
+      intersectionObserver = new IntersectionObserver(
+        (entries) => { inView = entries[0]?.isIntersecting ?? true },
+        { rootMargin: "100px" }
+      )
+      intersectionObserver.observe(canvas)
     }
 
     if (canvas.offsetWidth > 0) {
@@ -125,6 +143,7 @@ export function ProjectGlobe({
 
     return () => {
       if (animationId) cancelAnimationFrame(animationId)
+      if (intersectionObserver) intersectionObserver.disconnect()
       if (globe) globe.destroy()
     }
   }, [markers, speed])
@@ -162,7 +181,6 @@ export function ProjectGlobe({
           key={m.id}
           style={{
             position: "absolute",
-            // @ts-expect-error CSS Anchor Positioning
             positionAnchor: `--cobe-${m.id}`,
             bottom: "anchor(top)",
             left: "anchor(center)",
@@ -174,7 +192,7 @@ export function ProjectGlobe({
             pointerEvents: "none" as const,
             opacity: `var(--cobe-visible-${m.id}, 0)`,
             transition: "opacity 0.2s, filter 0.2s",
-          }}
+          } as React.CSSProperties}
         >
           {m.sticker}
         </div>

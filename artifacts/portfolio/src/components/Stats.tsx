@@ -47,15 +47,14 @@ export function Stats() {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 28, rotateX: 10 }}
-              animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                duration: 0.7,
-                delay: i * 0.1,
+                duration: 0.55,
+                delay: i * 0.08,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               className="relative flex flex-col items-center text-center py-11 px-6 group"
-              style={{ perspective: 700 }}
             >
               {/* Vertical separator */}
               {i < stats.length - 1 && (

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { MapPin, Code2, Layers, Users } from "lucide-react";
 import { SplitText } from "@/components/ui/split-text";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const expertise = [
   { icon: Code2, label: "Apex & LWC" },
@@ -17,25 +18,25 @@ const containerVariants: Variants = {
 const EASE = [0.215, 0.61, 0.355, 1] as [number, number, number, number];
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 28, rotateX: 8 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
-    transition: { duration: 0.7, ease: EASE },
+    transition: { duration: 0.6, ease: EASE },
   },
 };
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Parallax layers
-  const leftY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const rightY = useTransform(scrollYProgress, [0, 1], [60, -20]);
+  // Parallax layers — disabled on mobile to keep scroll jank-free.
+  const leftY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [40, -40]);
+  const rightY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [60, -20]);
 
   return (
     <section id="about" ref={sectionRef} className="py-28 relative z-20 overflow-hidden">

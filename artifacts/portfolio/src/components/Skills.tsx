@@ -348,15 +348,13 @@ export function Skills() {
                   <div className="flex flex-wrap gap-3 items-start content-start">
                     {activeCategory.skills.map((skill, index) => (
                       <motion.div
-                        layout
                         key={`${activeCategory.id}-${skill}`}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{
-                          type: "spring",
-                          stiffness: 350,
-                          damping: 25,
-                          delay: index * 0.02,
+                          duration: 0.28,
+                          ease: [0.25, 0.46, 0.45, 0.94],
+                          delay: index * 0.025,
                         }}
                         whileHover={{ scale: 1.05, y: -2 }}
                         className="px-4 py-2.5 rounded-full border text-sm font-medium cursor-default"

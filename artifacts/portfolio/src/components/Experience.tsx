@@ -98,10 +98,9 @@ function ExperienceCard({
       {/* Content */}
       <div className="pl-10 md:pl-0 md:w-1/2 w-full">
         <motion.div
-          initial={{ opacity: 0, x: isEven ? -60 : 60, rotateY: isEven ? -5 : 5 }}
-          animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
-          transition={{ duration: 0.75, ease: [0.215, 0.61, 0.355, 1] }}
-          style={{ perspective: 1000 }}
+          initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.65, ease: [0.215, 0.61, 0.355, 1] }}
         >
           <motion.div
             whileHover={{ y: -6, scale: 1.015 }}
@@ -182,9 +181,9 @@ function ExperienceCard({
                 {exp.highlights.map((item, i) => (
                   <motion.li
                     key={i}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -8 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.35 + i * 0.06, duration: 0.4 }}
+                    transition={{ delay: 0.25 + i * 0.05, duration: 0.32 }}
                     className="flex items-start gap-2.5 text-xs text-foreground/60"
                   >
                     <span

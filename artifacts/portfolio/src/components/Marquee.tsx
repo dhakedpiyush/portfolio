@@ -16,6 +16,8 @@ function Track({ reverse = false, duration = 55 }: { reverse?: boolean; duration
         style={{
           animation: `marquee-${reverse ? "rtl" : "ltr"} ${duration}s linear infinite`,
           width: "max-content",
+          willChange: "transform",
+          transform: "translate3d(0,0,0)",
         }}
       >
         {TRACK.map((item, i) => (
@@ -33,7 +35,7 @@ function Track({ reverse = false, duration = 55 }: { reverse?: boolean; duration
 
 export function Marquee() {
   return (
-    <div className="relative z-20 py-4 overflow-hidden border-y border-border/10 bg-background/20 backdrop-blur-sm">
+    <div className="relative z-20 py-4 overflow-hidden border-y border-border/10 bg-background/40">
       {/* Fade edges */}
       <div
         className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"

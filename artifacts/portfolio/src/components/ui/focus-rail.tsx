@@ -98,30 +98,12 @@ export function FocusRail({
     [handleNext, handlePrev]
   );
 
-  // Autoplay progress state
-  const [progress, setProgress] = React.useState(0);
-
-  // Autoplay logic with progress
+  // Autoplay — CSS animation drives the progress bar, a single timeout advances the slide.
+  // This replaces a 30ms setInterval that was forcing ~33 re-renders/sec of the whole carousel.
   React.useEffect(() => {
-    if (!autoPlay) {
-      setProgress(0);
-      return;
-    }
-
-    setProgress(0);
-    const startTime = Date.now();
-
-    const tick = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / interval) * 100, 100);
-      setProgress(pct);
-
-      if (pct >= 100) {
-        handleNext();
-      }
-    }, 30);
-
-    return () => clearInterval(tick);
+    if (!autoPlay) return;
+    const t = setTimeout(handleNext, interval);
+    return () => clearTimeout(t);
   }, [autoPlay, handleNext, interval, active]);
 
   // Keyboard navigation
@@ -300,12 +282,19 @@ export function FocusRail({
                 >
                   {i === activeIndex && (
                     <>
+                      <span className="absolute inset-0 rounded-full bg-primary/30" />
                       <span
-                        className="absolute inset-0 rounded-full bg-primary/30"
-                      />
-                      <span
-                        className="absolute inset-y-0 left-0 rounded-full bg-primary transition-none"
-                        style={{ width: `${progress}%` }}
+                        key={active}
+                        className="absolute inset-y-0 left-0 rounded-full bg-primary"
+                        style={{
+                          width: "100%",
+                          transformOrigin: "left center",
+                          willChange: "transform",
+                          animation: autoPlay
+                            ? `focus-rail-progress ${interval}ms linear forwards`
+                            : undefined,
+                          transform: autoPlay ? undefined : "scaleX(1)",
+                        }}
                       />
                     </>
                   )}

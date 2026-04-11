@@ -121,20 +121,6 @@
     max-width: 100%;
   }
 
-  /* Hide default cursor only on pointer/mouse devices */
-  @media (hover: hover) and (pointer: fine) {
-    *, *::before, *::after {
-      cursor: none !important;
-    }
-  }
-
-  /* Restore default cursor on touch devices */
-  @media (hover: none), (pointer: coarse) {
-    *, *::before, *::after {
-      cursor: auto !important;
-    }
-  }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply tracking-tight font-bold;
@@ -277,11 +263,47 @@ input:focus, textarea:focus {
 
 /* Marquee — infinite conveyor belt */
 @keyframes marquee-ltr {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-25%, 0, 0); }
 }
 
 @keyframes marquee-rtl {
-  0%   { transform: translateX(-25%); }
-  100% { transform: translateX(0); }
+  0%   { transform: translate3d(-25%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Focus rail autoplay progress bar */
+@keyframes focus-rail-progress {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Content-visibility: skip rendering work for offscreen sections.
+   Gives low-end devices a big boost on initial scroll. */
+@media (min-width: 0px) {
+  section[id="about"],
+  section[id="experience"],
+  section[id="skills"],
+  section[id="certifications"],
+  section[id="projects"],
+  section[id="contact"] {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
+}
+
+/* Respect user motion preferences — disables non-essential animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .bg-aurora,
+  .animate-float,
+  .animate-spin-slow,
+  .animate-pulse {
+    animation: none !important;
+  }
 }

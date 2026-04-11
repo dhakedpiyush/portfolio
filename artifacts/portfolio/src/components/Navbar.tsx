@@ -33,19 +33,48 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      const sections = [...LINKS].map((l) => l.name.toLowerCase());
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 200) {
-          setActiveSection(section);
-          break;
+    let rafPending = false;
+    let lastScrolled = false;
+    let lastActive = "home";
+
+    const sectionIds = LINKS.map((l) => l.name.toLowerCase());
+
+    const apply = () => {
+      rafPending = false;
+      const y = window.scrollY;
+
+      const scrolled = y > 50;
+      if (scrolled !== lastScrolled) {
+        lastScrolled = scrolled;
+        setIsScrolled(scrolled);
+      }
+
+      // Walk sections bottom-up and find the first one whose top is above the
+      // current scroll position. Use getBoundingClientRect so we don't depend
+      // on offsetTop (which forces layout on each section individually).
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + y;
+        if (y >= top - 200) {
+          if (lastActive !== sectionIds[i]) {
+            lastActive = sectionIds[i];
+            setActiveSection(sectionIds[i]);
+          }
+          return;
         }
       }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const onScroll = () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(apply);
+    };
+
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -69,34 +98,21 @@ export function Navbar() {
 
       <div style={{ paddingTop: "12px", paddingBottom: "12px" }}>
         <div className="max-w-7xl mx-auto px-6">
-          {/* Single pill/bar that morphs via Framer Motion */}
-          <motion.div
-            animate={
-              isScrolled
-                ? {
-                    borderRadius: 0,
-                    paddingLeft: 0,
-                    paddingRight: 0,
-                    paddingTop: 0,
-                    paddingBottom: 0,
-                  }
-                : {
-                    borderRadius: 9999,
-                    paddingLeft: 24,
-                    paddingRight: 24,
-                    paddingTop: 12,
-                    paddingBottom: 12,
-                  }
-            }
-            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          {/* Single pill/bar that morphs via plain CSS transitions — avoids per-frame layout */}
+          <div
             className="flex items-center justify-between relative"
             style={{
+              borderRadius: isScrolled ? 0 : 9999,
+              paddingLeft: isScrolled ? 0 : 24,
+              paddingRight: isScrolled ? 0 : 24,
+              paddingTop: isScrolled ? 0 : 12,
+              paddingBottom: isScrolled ? 0 : 12,
               background: isScrolled ? "rgba(0,0,0,0)" : "rgba(15, 23, 42, 0.75)",
-              backdropFilter: "blur(20px)",
+              backdropFilter: isScrolled ? undefined : "blur(20px)",
               border: isScrolled ? "1px solid rgba(0,0,0,0)" : "1px solid rgba(255,255,255,0.08)",
               boxShadow: isScrolled ? "0 4px 32px rgba(0,0,0,0)" : "0 4px 32px rgba(0,0,0,0.3)",
               transition:
-                "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease",
+                "background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, padding 0.5s ease",
             }}
           >
             {/* Logo */}
@@ -185,7 +201,7 @@ export function Navbar() {
                 <Menu size={24} />
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

@@ -1,16 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const fillRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const update = () => {
+    let rafPending = false;
+
+    const apply = () => {
+      rafPending = false;
+      const fill = fillRef.current;
+      if (!fill) return;
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      // Scale transform is way cheaper than changing width (no layout/paint)
+      fill.style.transform = `scaleX(${pct / 100})`;
     };
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+
+    const onScroll = () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(apply);
+    };
+
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -27,12 +47,15 @@ export function ScrollProgress() {
       }}
     >
       <div
+        ref={fillRef}
         style={{
           height: "100%",
-          width: `${progress}%`,
+          width: "100%",
           background: "linear-gradient(90deg, #00A1E0, #7B5EA7)",
           boxShadow: "0 0 8px rgba(0,161,224,0.6)",
-          transition: "width 0.1s linear",
+          transform: "scaleX(0)",
+          transformOrigin: "left center",
+          willChange: "transform",
         }}
       />
     </div>

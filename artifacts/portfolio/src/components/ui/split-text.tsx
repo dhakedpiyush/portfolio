@@ -11,13 +11,12 @@ interface SplitTextProps {
 }
 
 const charVariants: Variants = {
-  hidden: { opacity: 0, y: "120%", rotateX: 40 },
+  hidden: { opacity: 0, y: "100%" },
   visible: (i: number) => ({
     opacity: 1,
     y: "0%",
-    rotateX: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.5,
       delay: i,
       ease: [0.215, 0.61, 0.355, 1],
     },
@@ -54,7 +53,7 @@ export function SplitText({
       <span
         ref={ref}
         className={`inline-flex flex-wrap ${className}`}
-        style={{ overflow: "hidden", perspective: "600px" }}
+        style={{ overflow: "hidden" }}
         aria-label={text}
       >
         {chars.map((char, i) => (
