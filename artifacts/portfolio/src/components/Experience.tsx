@@ -6,12 +6,29 @@ import { SplitText } from "@/components/ui/split-text";
 
 const EXPERIENCES = [
   {
-    role: "Salesforce Developer & Project Lead",
+    role: "Salesforce Developer L2 & Project Lead",
     company: "Metadologie",
-    period: "Dec 2024 – Present",
+    period: "Apr 2026 – Present",
     location: "Jaipur, Rajasthan",
     current: true,
-    description: "Leading Salesforce implementations for enterprise clients in the aviation MRO sector.",
+    description: "Leading solution design and development teams on enterprise Salesforce implementations.",
+    highlights: [
+      "Work directly with stakeholders on requirement gathering, scope definition, and project kickoffs.",
+      "Monitor development progress and review code across multiple concurrent projects.",
+      "Own solution design and requirement analysis for new implementations.",
+      "Guide junior developers through technical decisions and mentor the team during development.",
+      "Act as the bridge between client requirements and the development team.",
+    ],
+    accentColor: "hsl(197 100% 44%)",
+    accentRgb: "0,161,224",
+  },
+  {
+    role: "Salesforce Developer & Project Lead",
+    company: "Metadologie",
+    period: "Dec 2024 – Apr 2026",
+    location: "Jaipur, Rajasthan",
+    current: false,
+    description: "Led Salesforce implementations for enterprise clients in the aviation MRO sector.",
     highlights: [
       "Architected complex Apex classes, triggers, and batch jobs with strict bulkification.",
       "Developed custom UI components using LWC, incorporating Platform Events for real-time modals.",

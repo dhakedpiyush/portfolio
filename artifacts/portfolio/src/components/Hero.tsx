@@ -106,7 +106,8 @@ export function Hero() {
             className="mb-5 md:mb-6"
           >
             <h2 className="text-lg md:text-3xl font-display text-muted-foreground mb-2">
-              Salesforce Developer{" "}
+              Salesforce Developer L2 & Project Lead
+              <br />
               <span className="text-primary">@ Metadologie Inc</span>
             </h2>
             <div className="flex items-center justify-center md:justify-start gap-2 text-xs md:text-sm">
@@ -139,7 +140,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="text-sm md:text-lg text-foreground/70 max-w-xl mb-6 md:mb-10 leading-relaxed px-2 md:px-0"
           >
-            5x Certified Salesforce Developer with 4 years of experience specializing in Apex, LWC, and Service Cloud. Based in Jaipur, building enterprise-scale solutions.
+            5x Certified Salesforce Developer L2 with 4 years of experience specializing in Apex, LWC, and Service Cloud. Based in Jaipur, building enterprise-scale solutions.
           </motion.p>
 
           {/* Group 4: Buttons */}

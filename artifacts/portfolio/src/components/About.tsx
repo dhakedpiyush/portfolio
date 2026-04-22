@@ -88,13 +88,13 @@ export function About() {
                 </h3>
                 <div className="space-y-3.5 text-foreground/70 leading-relaxed text-sm">
                   <p>
-                    I'm a <strong className="text-foreground/95 font-semibold">Salesforce Developer and Project Lead</strong> with 4 years of experience building and delivering scalable B2B solutions. I work across Apex, LWC, and Service Cloud — from writing complex business logic to architecting full implementations.
+                    I'm a <strong className="text-foreground/95 font-semibold">Salesforce Developer L2 & Project Lead at Metadologie</strong> with 4 years of experience building and delivering scalable B2B solutions. I work across Apex, LWC, and Service Cloud — from writing complex business logic to architecting full implementations.
                   </p>
                   <p>
                     I have a strong track record of translating complex or ambiguous requirements into clean, maintainable technical solutions. I've worked hands-on with managed packages like <strong className="text-foreground/85">AvSight, AuthVia, and Accounting Seed</strong> across multiple client engagements.
                   </p>
                   <p>
-                    Outside of coding, I lead and mentor developers on my team, run code reviews, and make sure we're following Salesforce best practices across the board. I'm a <strong className="text-foreground/85">Four Star Ranger</strong> on Trailhead and keep up with what's new on the platform — <strong className="text-foreground/85">Agentforce</strong> being the most recent one I've gone deep on.
+                    In my L2 role, I lead solution design, drive requirement gathering with stakeholders, run code reviews, and mentor junior developers on the team — making sure we're following Salesforce best practices across every project. I'm a <strong className="text-foreground/85">Four Star Ranger</strong> on Trailhead and keep up with what's new on the platform — <strong className="text-foreground/85">Agentforce</strong> being the most recent one I've gone deep on.
                   </p>
                 </div>
 
