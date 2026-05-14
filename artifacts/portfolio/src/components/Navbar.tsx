@@ -4,7 +4,7 @@ import { Menu, X, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/1I8H3fRnsYoxrhxeJnS0hVBYdee_wejaz/view?usp=sharing";
+  "https://drive.google.com/file/d/13SHoIcjlGmyjYpNPZqtKhqQhmRiQWBIU/view?usp=sharing";
 
 const LINKS = [
   { name: "Home", href: "#home" },
